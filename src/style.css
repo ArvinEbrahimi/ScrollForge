@@ -66,6 +66,14 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+body.is-loading {
+  overflow: hidden;
+}
+
+body.is-loading #smooth-content {
+  visibility: hidden;
+}
+
 img,
 svg {
   display: block;
@@ -94,8 +102,55 @@ button:focus-visible {
   position: fixed;
   inset: 0;
   z-index: var(--z-overlay);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  pointer-events: all;
+  will-change: transform;
+}
+
+.loader__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: min(280px, 70vw);
+}
+
+.loader__mark {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  letter-spacing: 0.35em;
+  text-indent: 0.35em;
+  color: var(--accent);
+  margin-bottom: 2rem;
+}
+
+.loader__progress-track {
+  width: 100%;
+  height: 2px;
+  background: var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.loader__progress-fill {
+  width: 0%;
+  height: 100%;
   background: var(--accent);
-  pointer-events: none;
+  border-radius: 2px;
+  transform-origin: left center;
+}
+
+.loader__percent {
+  margin-top: 1rem;
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
 }
 
 /* --- Custom Cursor -------------------------------------------------------- */
