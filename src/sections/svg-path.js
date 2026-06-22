@@ -1,8 +1,9 @@
 import { gsap } from 'gsap';
+import { withSectionContext } from '../core/section-base.js';
 
 export function initSvgPath() {
   const section = document.querySelector('#svg-path');
-  if (!section) return;
+  if (!section) return null;
 
   section.innerHTML = `
     <div class="svg-path__container" role="img" aria-label="Development workflow: Init, Build, Test, Deploy">
@@ -32,31 +33,33 @@ export function initSvgPath() {
   const path = section.querySelector('.svg-path__line');
   const length = path.getTotalLength();
 
-  gsap.set(path, { strokeDasharray: length, strokeDashoffset: length });
+  return withSectionContext(section, () => {
+    gsap.set(path, { strokeDasharray: length, strokeDashoffset: length });
 
-  gsap.to(path, {
-    strokeDashoffset: 0,
-    ease: 'none',
-    scrollTrigger: {
-      trigger: section,
-      start: 'top 80%',
-      end: 'bottom 20%',
-      scrub: 1,
-    },
-  });
-
-  const milestones = section.querySelectorAll('.svg-milestone:not(:first-child)');
-  const labels = section.querySelectorAll('.svg-label:not(:first-child)');
-
-  milestones.forEach((dot, i) => {
-    gsap.to([dot, labels[i]], {
-      opacity: 1,
-      duration: 0.3,
+    gsap.to(path, {
+      strokeDashoffset: 0,
+      ease: 'none',
       scrollTrigger: {
         trigger: section,
-        start: `${20 + i * 22}% 80%`,
-        toggleActions: 'play none none reverse',
+        start: 'top 80%',
+        end: 'bottom 20%',
+        scrub: 1,
       },
+    });
+
+    const milestones = section.querySelectorAll('.svg-milestone:not(:first-child)');
+    const labels = section.querySelectorAll('.svg-label:not(:first-child)');
+
+    milestones.forEach((dot, i) => {
+      gsap.to([dot, labels[i]], {
+        opacity: 1,
+        duration: 0.3,
+        scrollTrigger: {
+          trigger: section,
+          start: `${20 + i * 22}% 80%`,
+          toggleActions: 'play none none reverse',
+        },
+      });
     });
   });
 }

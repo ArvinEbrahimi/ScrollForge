@@ -35,7 +35,8 @@ ScrollForge/
 ├── README.md
 ├── docs/
 │   ├── PROJECT_SPEC.md          ← this file
-│   └── IMPLEMENTATION_TASKS.md  ← task breakdown & branch plan
+│   ├── IMPLEMENTATION_TASKS.md  ← V1 task breakdown (complete)
+│   └── V2_ADVANCED_TASKS.md   ← V2 advanced upgrades (40 tasks)
 ├── public/
 │   └── fonts/                   ← optional self-hosted font fallback
 └── src/
