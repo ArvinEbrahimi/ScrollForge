@@ -33,6 +33,16 @@
   --z-overlay:      10000;
 }
 
+:root[data-theme="light"] {
+  --bg:             #f0ece4;
+  --surface:        #ffffff;
+  --border:         #ddd8ce;
+  --text-primary:   #080808;
+  --text-muted:     #6a6a6a;
+  --accent:         #8aaa2e;
+  --accent-dim:     #6b8524;
+}
+
 /* --- Reset & Base --------------------------------------------------------- */
 
 *, *::before, *::after {
@@ -1098,5 +1108,17 @@ button:focus-visible {
 }
 
 .site-controls__btn.is-active .site-controls__icon--on {
+  display: inline;
+}
+
+.site-controls__btn--theme .site-controls__icon--light {
+  display: none;
+}
+
+.site-controls__btn--theme.is-active .site-controls__icon--dark {
+  display: none;
+}
+
+.site-controls__btn--theme.is-active .site-controls__icon--light {
   display: inline;
 }
