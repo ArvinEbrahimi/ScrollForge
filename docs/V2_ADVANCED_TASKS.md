@@ -180,7 +180,7 @@ Phase 6 — Ship
 
 ### V2-A04 — Global Scroll Progress Navigation
 **Branch:** `feat/V2-A04-scroll-nav`  
-**Priority:** P1 · **Status:** ⬜  
+**Priority:** P1 · **Status:** ✅ Done  
 **Depends on:** A01, A03
 
 **ایده:** نوار ناوبری ثابت (مثل Locomotive/Stripe) — dots یا section labels + progress bar + active section highlight.
@@ -759,7 +759,7 @@ Phase 0 — Foundation
 [✓] A01  Scroll orchestrator + gsap.context cleanup
 [✓] A02  ScrollTrigger.matchMedia system
 [✓] A03  Real asset preloader
-[ ] A04  Global scroll progress nav
+[✓] A04  Global scroll progress nav
 [ ] A05  Section transition veil
 
 Phase 1 — Global UX
@@ -819,7 +819,7 @@ Phase 6 — Ship
 | A01 | `feat/V2-A01-scroll-orchestrator` | merged | ✅ Done |
 | A02 | `feat/V2-A02-match-media` | merged | ✅ Done |
 | A03 | `feat/V2-A03-asset-preloader` | merged | ✅ Done |
-| A04 | — | — | ⬜ Pending |
+| A04 | `feat/V2-A04-scroll-nav` | merged | ✅ Done |
 | A05 | — | — | ⬜ Pending |
 | A06 | — | — | ⬜ Pending |
 | A07 | — | — | ⬜ Pending |
