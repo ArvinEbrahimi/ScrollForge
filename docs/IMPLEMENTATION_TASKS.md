@@ -200,7 +200,7 @@ public/fonts/.gitkeep
 
 ### T07 — Pinned Reveal Section
 **Branch:** `feat/T07-pinned-reveal`  
-**Status:** ⬜ Pending  
+**Status:** ✅ Done  
 **Depends on:** T03
 
 **Scope:**
@@ -414,7 +414,7 @@ For a single developer/agent, this order minimizes rework:
 | T04 | `feat/T04-cursor` | merged | ✅ Done |
 | T05 | `feat/T05-hero` | merged | ✅ Done |
 | T06 | `feat/T06-marquee` | merged | ✅ Done |
-| T07 | — | — | ⬜ Pending |
+| T07 | `feat/T07-pinned-reveal` | merged | ✅ Done |
 | T08 | — | — | ⬜ Pending |
 | T09 | — | — | ⬜ Pending |
 | T10 | — | — | ⬜ Pending |
