@@ -2,6 +2,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 
+import 'lenis/dist/lenis.css';
 import './style.css';
 
 import { initLenis } from './utils/lenis.js';
@@ -28,4 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initSvgPath();
   initStaggerCards();
   initOutro();
+
+  requestAnimationFrame(() => ScrollTrigger.refresh());
 });
