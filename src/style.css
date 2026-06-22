@@ -1035,3 +1035,17 @@ button:focus-visible {
     transition: none;
   }
 }
+
+/* --- Section Veil (V2-A05) ------------------------------------------------ */
+
+.section-veil {
+  position: fixed;
+  inset: 0;
+  z-index: 8000;
+  background: var(--accent);
+  opacity: 0;
+  pointer-events: none;
+  transform: scaleX(0);
+  transform-origin: left center;
+  will-change: transform, opacity;
+}
