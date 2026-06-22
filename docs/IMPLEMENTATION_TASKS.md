@@ -243,7 +243,7 @@ public/fonts/.gitkeep
 
 ### T09 — Text Reveal Section
 **Branch:** `feat/T09-text-reveal`  
-**Status:** ⬜ Pending  
+**Status:** ✅ Done  
 **Depends on:** T03
 
 **Scope:**
@@ -416,7 +416,7 @@ For a single developer/agent, this order minimizes rework:
 | T06 | `feat/T06-marquee` | merged | ✅ Done |
 | T07 | `feat/T07-pinned-reveal` | merged | ✅ Done |
 | T08 | `feat/T08-horizontal-scroll` | merged | ✅ Done |
-| T09 | — | — | ⬜ Pending |
+| T09 | `feat/T09-text-reveal` | merged | ✅ Done |
 | T10 | — | — | ⬜ Pending |
 | T11 | — | — | ⬜ Pending |
 | T12 | — | — | ⬜ Pending |
