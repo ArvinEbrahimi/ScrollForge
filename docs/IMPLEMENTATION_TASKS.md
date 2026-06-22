@@ -62,7 +62,7 @@ T13 depends on all sections. T14 is final.
 
 ### T01 — Project Scaffold
 **Branch:** `feat/T01-scaffold`  
-**Status:** ⬜ Pending
+**Status:** ✅ Done
 
 **Scope:**
 - [ ] `package.json` with dependencies (gsap, lenis, vite)
@@ -408,7 +408,7 @@ For a single developer/agent, this order minimizes rework:
 
 | Task | Branch | PR | Status |
 |------|--------|-----|--------|
-| T01 | — | — | ⬜ Pending |
+| T01 | `feat/T01-scaffold` | merged | ✅ Done |
 | T02 | — | — | ⬜ Pending |
 | T03 | — | — | ⬜ Pending |
 | T04 | — | — | ⬜ Pending |
