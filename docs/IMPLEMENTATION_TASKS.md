@@ -136,7 +136,7 @@ public/fonts/.gitkeep
 
 ### T04 — Custom Cursor
 **Branch:** `feat/T04-cursor`  
-**Status:** ⬜ Pending  
+**Status:** ✅ Done  
 **Depends on:** T02
 
 **Scope:**
@@ -411,7 +411,7 @@ For a single developer/agent, this order minimizes rework:
 | T01 | `feat/T01-scaffold` | merged | ✅ Done |
 | T02 | `feat/T02-design-system` | merged | ✅ Done |
 | T03 | `feat/T03-lenis` | merged | ✅ Done |
-| T04 | — | — | ⬜ Pending |
+| T04 | `feat/T04-cursor` | merged | ✅ Done |
 | T05 | — | — | ⬜ Pending |
 | T06 | — | — | ⬜ Pending |
 | T07 | — | — | ⬜ Pending |
