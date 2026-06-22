@@ -117,7 +117,6 @@ button:focus-visible {
   justify-content: center;
   background: var(--bg);
   pointer-events: all;
-  will-change: transform;
 }
 
 .loader__inner {
@@ -174,7 +173,6 @@ button:focus-visible {
   z-index: var(--z-cursor);
   transform: translate(-50%, -50%);
   border-radius: 50%;
-  will-change: transform;
 }
 
 .cursor-dot {
@@ -259,7 +257,6 @@ body.has-custom-cursor .cursor-ring {
   background: var(--accent);
   opacity: var(--trail-opacity, 0.3);
   mix-blend-mode: difference;
-  will-change: transform;
 }
 
 .cursor-ring.is-drag {
@@ -727,7 +724,6 @@ body.has-custom-cursor .cursor-ring {
   background: var(--surface);
   position: relative;
   transform-style: preserve-3d;
-  will-change: transform;
 }
 
 .pinned__video {
@@ -787,7 +783,6 @@ body.has-custom-cursor .cursor-ring {
   display: flex;
   gap: 2rem;
   padding: 0 var(--section-pad-x);
-  will-change: transform;
 }
 
 .horiz__card {
@@ -976,7 +971,6 @@ body.has-custom-cursor .cursor-ring {
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   transform-style: preserve-3d;
-  will-change: transform;
   overflow: hidden;
 }
 
@@ -1982,7 +1976,6 @@ body.has-custom-cursor .cursor-ring {
 
 #smooth-content {
   transform-origin: center top;
-  will-change: transform;
 }
 
 /* --- Keyboard Help (V2-A29) ------------------------------------------------ */
@@ -2516,7 +2509,31 @@ body.has-custom-cursor .cursor-ring {
   pointer-events: none;
   transform: scaleX(0);
   transform-origin: left center;
-  will-change: transform, opacity;
+}
+
+/* --- Micro-interactions (V2-A38) ------------------------------------------ */
+
+.ui-ripple-host {
+  position: relative;
+  overflow: hidden;
+}
+
+.ui-ripple {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  margin: -4px 0 0 -4px;
+  border-radius: 50%;
+  background: rgba(200, 240, 78, 0.45);
+  pointer-events: none;
+  animation: ui-ripple 0.55s ease-out forwards;
+}
+
+@keyframes ui-ripple {
+  to {
+    transform: scale(18);
+    opacity: 0;
+  }
 }
 
 /* --- Site Controls (V2-A06) ------------------------------------------------ */

@@ -61,7 +61,7 @@ export function initHero() {
 
     const chars = section.querySelectorAll('.hero__char');
     const subEl = section.querySelector('.hero__sub-text');
-    const subCopy = 'Crafted with GSAP ScrollTrigger';
+    const subCopy = 'Agency-grade motion — built with GSAP ScrollTrigger';
 
     const tl = gsap.timeline({
       defaults: { ease: 'power4.out' },
