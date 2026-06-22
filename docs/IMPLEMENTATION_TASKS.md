@@ -342,7 +342,7 @@ public/fonts/.gitkeep
 
 ### T14 — README & Final QA
 **Branch:** `feat/T14-readme-qa`  
-**Status:** ⬜ Pending  
+**Status:** ✅ Done  
 **Depends on:** T13
 
 **Scope:**
@@ -363,20 +363,20 @@ public/fonts/.gitkeep
 ## Master Checklist (mirror of spec)
 
 ```
-[ ] T01  vite.config.js + package.json + project skeleton
-[ ] T02  Design tokens + global CSS
-[ ] T03  Lenis + ScrollTrigger sync
-[ ] T04  Custom cursor (all states)
-[ ] T05  Hero: loader + per-char + parallax
-[ ] T06  Marquee: bidirectional + hover speed
-[ ] T07  Pinned: pin + progress + panel timeline
-[ ] T08  Horizontal: scrub + per-card + horiz-anim id
-[ ] T09  Text reveal: word illumination
-[ ] T10  SVG path: strokeDashoffset + milestones
-[ ] T11  Stagger cards: entrance + GSAP hover
-[ ] T12  Outro: theme inversion + CTA
-[ ] T13  Responsive + reduced motion + a11y
-[ ] T14  README + final QA
+[✓] T01  vite.config.js + package.json + project skeleton
+[✓] T02  Design tokens + global CSS
+[✓] T03  Lenis + ScrollTrigger sync
+[✓] T04  Custom cursor (all states)
+[✓] T05  Hero: loader + per-char + parallax
+[✓] T06  Marquee: bidirectional + hover speed
+[✓] T07  Pinned: pin + progress + panel timeline
+[✓] T08  Horizontal: scrub + per-card + horiz-anim id
+[✓] T09  Text reveal: word illumination
+[✓] T10  SVG path: strokeDashoffset + milestones
+[✓] T11  Stagger cards: entrance + GSAP hover
+[✓] T12  Outro: theme inversion + CTA
+[✓] T13  Responsive + reduced motion + a11y
+[✓] T14  README + final QA
 ```
 
 ---
@@ -421,7 +421,7 @@ For a single developer/agent, this order minimizes rework:
 | T11 | `feat/T11-stagger-cards` | merged | ✅ Done |
 | T12 | `feat/T12-outro` | merged | ✅ Done |
 | T13 | `feat/T13-responsive-a11y` | merged | ✅ Done |
-| T14 | — | — | ⬜ Pending |
+| T14 | `feat/T14-readme-qa` | merged | ✅ Done |
 
 > این جدول بعد از هر PR merge به‌روز می‌شود.
 
