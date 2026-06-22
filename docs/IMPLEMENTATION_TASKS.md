@@ -113,7 +113,7 @@ public/fonts/.gitkeep
 
 ### T03 — Lenis Smooth Scroll
 **Branch:** `feat/T03-lenis`  
-**Status:** ⬜ Pending  
+**Status:** ✅ Done  
 **Depends on:** T02
 
 **Scope:**
@@ -410,7 +410,7 @@ For a single developer/agent, this order minimizes rework:
 |------|--------|-----|--------|
 | T01 | `feat/T01-scaffold` | merged | ✅ Done |
 | T02 | `feat/T02-design-system` | merged | ✅ Done |
-| T03 | — | — | ⬜ Pending |
+| T03 | `feat/T03-lenis` | merged | ✅ Done |
 | T04 | — | — | ⬜ Pending |
 | T05 | — | — | ⬜ Pending |
 | T06 | — | — | ⬜ Pending |
