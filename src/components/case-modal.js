@@ -1,5 +1,6 @@
 import { gsap } from 'gsap';
 import { getLenis } from '../utils/lenis.js';
+import { runViewTransition, supportsViewTransitions } from '../utils/view-transitions.js';
 
 /**
  * @typedef {Object} CaseStudy
@@ -20,6 +21,7 @@ export function createCaseModal() {
   modal.setAttribute('aria-modal', 'true');
   modal.setAttribute('aria-label', 'Project case study');
   modal.hidden = true;
+  if (supportsViewTransitions) modal.style.viewTransitionName = 'case-modal';
 
   modal.innerHTML = `
     <div class="case-modal__backdrop" data-close="true"></div>
@@ -49,16 +51,30 @@ export function createCaseModal() {
   const linkEl = modal.querySelector('.case-modal__link');
 
   const close = () => {
-    gsap.to([panel, backdrop], {
-      opacity: 0,
-      duration: 0.3,
-      ease: 'power2.in',
-      onComplete: () => {
+    const finish = () => {
+      runViewTransition(() => {
         modal.hidden = true;
         gsap.set(panel, { clearProps: 'all' });
         document.body.style.overflow = '';
         getLenis()?.start();
-      },
+      });
+    };
+
+    if (supportsViewTransitions) {
+      gsap.to([panel, backdrop], {
+        opacity: 0,
+        duration: 0.25,
+        ease: 'power2.in',
+        onComplete: finish,
+      });
+      return;
+    }
+
+    gsap.to([panel, backdrop], {
+      opacity: 0,
+      duration: 0.3,
+      ease: 'power2.in',
+      onComplete: finish,
     });
   };
 
@@ -79,8 +95,11 @@ export function createCaseModal() {
     }
 
     const rect = card.getBoundingClientRect();
-    modal.hidden = false;
-    document.body.style.overflow = 'hidden';
+
+    runViewTransition(() => {
+      modal.hidden = false;
+      document.body.style.overflow = 'hidden';
+    });
 
     gsap.set(backdrop, { opacity: 0 });
     gsap.set(panel, {

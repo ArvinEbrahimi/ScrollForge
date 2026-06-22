@@ -15,6 +15,9 @@ import { initSound } from './utils/sound.js';
 import { initTheme } from './utils/theme.js';
 import { initScrollProgress } from './utils/scroll-progress.js';
 import { initPostLayer } from './utils/post-layer.js';
+import { initKeyboardNav } from './utils/keyboard-nav.js';
+import { initVelocitySkew } from './utils/velocity-skew.js';
+import { initEasterEgg } from './utils/easter-egg.js';
 import { initHero } from './sections/hero.js';
 import { initMarquee } from './sections/marquee.js';
 import { initPinnedReveal } from './sections/pinned-reveal.js';
@@ -52,6 +55,18 @@ let destroyScrollProgress = null;
 /** @type {(() => void) | null} */
 let destroyPostLayer = null;
 
+/** @type {(() => void) | null} */
+let destroyCursor = null;
+
+/** @type {(() => void) | null} */
+let destroyKeyboardNav = null;
+
+/** @type {(() => void) | null} */
+let destroyVelocitySkew = null;
+
+/** @type {(() => void) | null} */
+let destroyEasterEgg = null;
+
 orchestrator
   .register('hero', initHero)
   .register('marquee', initMarquee)
@@ -78,15 +93,19 @@ async function boot() {
   }
 
   initLenis();
+  const lenis = getLenis();
   orchestrator.initAll();
-  initCursor();
+  destroyCursor = initCursor();
 
-  destroyScrollNav = initScrollNav(getLenis());
+  destroyScrollNav = initScrollNav(lenis);
   destroySectionVeil = initSectionVeil();
-  destroySound = initSound(getLenis());
+  destroySound = initSound(lenis);
   destroyTheme = initTheme();
   destroyScrollProgress = initScrollProgress();
-  destroyPostLayer = initPostLayer(getLenis());
+  destroyPostLayer = initPostLayer(lenis);
+  destroyKeyboardNav = initKeyboardNav(lenis);
+  destroyVelocitySkew = initVelocitySkew(lenis);
+  destroyEasterEgg = initEasterEgg(orchestrator);
 
   requestAnimationFrame(() => orchestrator.refresh());
 
@@ -101,6 +120,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 if (import.meta.hot) {
   import.meta.hot.dispose(() => {
+    destroyEasterEgg?.();
+    destroyVelocitySkew?.();
+    destroyKeyboardNav?.();
+    destroyCursor?.();
     destroySectionVeil?.();
     destroySound?.();
     destroyTheme?.();
