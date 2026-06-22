@@ -180,7 +180,7 @@ public/fonts/.gitkeep
 
 ### T06 — Marquee Section
 **Branch:** `feat/T06-marquee`  
-**Status:** ⬜ Pending  
+**Status:** ✅ Done  
 **Depends on:** T02
 
 **Scope:**
@@ -413,7 +413,7 @@ For a single developer/agent, this order minimizes rework:
 | T03 | `feat/T03-lenis` | merged | ✅ Done |
 | T04 | `feat/T04-cursor` | merged | ✅ Done |
 | T05 | `feat/T05-hero` | merged | ✅ Done |
-| T06 | — | — | ⬜ Pending |
+| T06 | `feat/T06-marquee` | merged | ✅ Done |
 | T07 | — | — | ⬜ Pending |
 | T08 | — | — | ⬜ Pending |
 | T09 | — | — | ⬜ Pending |
