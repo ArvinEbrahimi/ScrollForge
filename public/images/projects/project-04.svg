@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
+  <rect width="800" height="500" fill="#080808"/>
+  <path d="M100,350 Q400,80 700,350" fill="none" stroke="#c8f04e" stroke-width="3" opacity="0.6"/>
+  <text x="40" y="80" fill="#c8f04e" font-family="system-ui,sans-serif" font-size="28" font-weight="700">WebRTC Calls</text>
+</svg>
