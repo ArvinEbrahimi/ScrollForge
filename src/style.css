@@ -849,3 +849,189 @@ button:focus-visible {
 .sf-debug__actions button:hover {
   background: var(--accent-dim);
 }
+
+/* --- Scroll Navigation (V2-A04) ------------------------------------------- */
+
+.scroll-nav {
+  position: fixed;
+  z-index: 9000;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  pointer-events: auto;
+}
+
+.scroll-nav.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(12px);
+}
+
+/* Desktop — right rail */
+.scroll-nav--desktop {
+  top: 50%;
+  right: clamp(1rem, 3vw, 2.5rem);
+  transform: translateY(-50%);
+}
+
+.scroll-nav--desktop.is-hidden {
+  transform: translate(12px, -50%);
+}
+
+.scroll-nav__progress {
+  position: absolute;
+  top: 0;
+  right: 5px;
+  width: 2px;
+  height: 100%;
+  background: var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.scroll-nav__progress-fill {
+  width: 100%;
+  height: 100%;
+  background: var(--accent);
+  transform: scaleY(0);
+  transform-origin: top center;
+}
+
+.scroll-nav__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding-right: 1.5rem;
+}
+
+.scroll-nav__btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.scroll-nav__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1.5px solid var(--text-muted);
+  background: transparent;
+  transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+  flex-shrink: 0;
+}
+
+.scroll-nav__btn.is-active .scroll-nav__dot,
+.scroll-nav__btn:focus-visible .scroll-nav__dot {
+  transform: scale(1.35);
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.scroll-nav__tooltip {
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  opacity: 0;
+  transform: translateX(8px);
+  transition: opacity 0.25s ease, transform 0.25s ease, color 0.25s ease;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.scroll-nav__btn:hover .scroll-nav__tooltip,
+.scroll-nav__btn.is-active .scroll-nav__tooltip,
+.scroll-nav__btn:focus-visible .scroll-nav__tooltip {
+  opacity: 1;
+  transform: translateX(0);
+  color: var(--text-primary);
+}
+
+.scroll-nav__btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+/* Mobile — bottom pill bar */
+.scroll-nav--mobile {
+  left: 50%;
+  bottom: 1.25rem;
+  transform: translateX(-50%);
+  width: min(92vw, 420px);
+}
+
+.scroll-nav--mobile.is-hidden {
+  transform: translate(-50%, 12px);
+}
+
+.scroll-nav__mobile-track {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.25rem;
+  padding: 0.5rem 0.75rem;
+  background: rgba(17, 17, 17, 0.9);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  backdrop-filter: blur(10px);
+}
+
+.scroll-nav__mobile-btn {
+  flex: 1;
+  min-width: 0;
+  padding: 0.35rem 0.25rem;
+  font-family: var(--font-display);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  background: none;
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: color 0.25s ease, background 0.25s ease;
+}
+
+.scroll-nav__mobile-btn.is-active {
+  color: var(--bg);
+  background: var(--accent);
+}
+
+.scroll-nav__mobile-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.scroll-nav__mobile-progress {
+  height: 2px;
+  margin-top: 0.5rem;
+  background: var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.scroll-nav__mobile-progress-fill {
+  width: 100%;
+  height: 100%;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+@media (max-width: 768px) {
+  body {
+    padding-bottom: 4.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-nav {
+    transition: none;
+  }
+}

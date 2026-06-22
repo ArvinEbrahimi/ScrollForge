@@ -2,6 +2,9 @@ import Lenis from 'lenis';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
+/** @type {Lenis | null} */
+let lenisInstance = null;
+
 export function initLenis() {
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (prefersReduced) return null;
@@ -27,5 +30,10 @@ export function initLenis() {
     resizeTimer = setTimeout(() => ScrollTrigger.refresh(), 150);
   });
 
+  lenisInstance = lenis;
   return lenis;
+}
+
+export function getLenis() {
+  return lenisInstance;
 }
