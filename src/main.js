@@ -14,6 +14,7 @@ import { initSectionVeil } from './utils/section-veil.js';
 import { initSound } from './utils/sound.js';
 import { initTheme } from './utils/theme.js';
 import { initScrollProgress } from './utils/scroll-progress.js';
+import { initPostLayer } from './utils/post-layer.js';
 import { initHero } from './sections/hero.js';
 import { initMarquee } from './sections/marquee.js';
 import { initPinnedReveal } from './sections/pinned-reveal.js';
@@ -41,6 +42,9 @@ let destroyTheme = null;
 
 /** @type {(() => void) | null} */
 let destroyScrollProgress = null;
+
+/** @type {(() => void) | null} */
+let destroyPostLayer = null;
 
 orchestrator
   .register('hero', initHero)
@@ -70,6 +74,7 @@ async function boot() {
   destroySound = initSound(getLenis());
   destroyTheme = initTheme();
   destroyScrollProgress = initScrollProgress();
+  destroyPostLayer = initPostLayer(getLenis());
 
   requestAnimationFrame(() => orchestrator.refresh());
 
@@ -88,6 +93,7 @@ if (import.meta.hot) {
     destroySound?.();
     destroyTheme?.();
     destroyScrollProgress?.();
+    destroyPostLayer?.();
     destroyScrollNav?.();
     orchestrator.destroyAll();
   });
