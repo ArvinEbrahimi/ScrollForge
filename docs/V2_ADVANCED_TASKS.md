@@ -281,7 +281,7 @@ Phase 6 — Ship
 
 ### V2-A10 — Global Post-Processing Layer
 **Branch:** `feat/V2-A10-post-layer`  
-**Priority:** P1 · **Status:** ⬜  
+**Priority:** P1 · **Status:** ✅ Done  
 **Depends on:** —
 
 **ایده:** film grain + vignette + subtle chromatic aberration on scroll velocity — pure CSS/SVG، بدون WebGL.
@@ -763,11 +763,11 @@ Phase 0 — Foundation
 [✓] A05  Section transition veil
 
 Phase 1 — Global UX
-[ ] A06  Sound design (opt-in)
-[ ] A07  Theme toggle GSAP morph
-[ ] A08  Scrollbar + progress ring
-[ ] A09  SEO / OG / meta
-[ ] A10  Grain + vignette post-layer
+[✓] A06  Sound design (opt-in)
+[✓] A07  Theme toggle GSAP morph
+[✓] A08  Scrollbar + progress ring
+[✓] A09  SEO / OG / meta
+[✓] A10  Grain + vignette post-layer
 
 Phase 2 — Hero 2.0
 [ ] A11  Three.js particle field
@@ -825,7 +825,7 @@ Phase 6 — Ship
 | A07 | `feat/V2-A07-theme-toggle` | merged | ✅ Done |
 | A08 | `feat/V2-A08-scroll-progress` | merged | ✅ Done |
 | A09 | `feat/V2-A09-seo-meta` | merged | ✅ Done |
-| A10 | — | — | ⬜ Pending |
+| A10 | `feat/V2-A10-post-layer` | merged | ✅ Done |
 | A11 | — | — | ⬜ Pending |
 | A12 | — | — | ⬜ Pending |
 | A13 | — | — | ⬜ Pending |
