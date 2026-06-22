@@ -281,7 +281,7 @@ public/fonts/.gitkeep
 
 ### T11 — Stagger Cards Section
 **Branch:** `feat/T11-stagger-cards`  
-**Status:** ⬜ Pending  
+**Status:** ✅ Done  
 **Depends on:** T02
 
 **Scope:**
@@ -418,7 +418,7 @@ For a single developer/agent, this order minimizes rework:
 | T08 | `feat/T08-horizontal-scroll` | merged | ✅ Done |
 | T09 | `feat/T09-text-reveal` | merged | ✅ Done |
 | T10 | `feat/T10-svg-path` | merged | ✅ Done |
-| T11 | — | — | ⬜ Pending |
+| T11 | `feat/T11-stagger-cards` | merged | ✅ Done |
 | T12 | — | — | ⬜ Pending |
 | T13 | — | — | ⬜ Pending |
 | T14 | — | — | ⬜ Pending |
