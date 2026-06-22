@@ -1,11 +1,10 @@
 import { gsap } from 'gsap';
 import { withSectionContext } from '../core/section-base.js';
+import { BREAKPOINTS, createMatchMedia } from '../utils/match-media.js';
 
 export function initHorizontalScroll() {
   const section = document.querySelector('#horizontal');
   if (!section) return null;
-
-  const isMobile = window.matchMedia('(max-width: 768px)').matches;
 
   const projects = [
     { label: 'PROJECT 01', title: 'Cinematic\nHero', desc: 'Three.js + post-processing pipeline' },
@@ -38,54 +37,61 @@ export function initHorizontalScroll() {
   const track = section.querySelector('.horiz__track');
   const cards = section.querySelectorAll('.horiz__card');
 
-  return withSectionContext(section, () => {
-    if (isMobile) {
-      gsap.from(cards, {
-        y: 60,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.15,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: section,
-          start: 'top 80%',
-        },
-      });
-      return;
-    }
+  return withSectionContext(section, (ctx) => {
+    const revertMedia = createMatchMedia({
+      [`${BREAKPOINTS.mobile} and (prefers-reduced-motion: no-preference)`]: () => {
+        gsap.from(cards, {
+          y: 60,
+          opacity: 0,
+          duration: 0.8,
+          stagger: 0.15,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: section,
+            start: 'top 80%',
+          },
+        });
+      },
+      [`(min-width: 769px) and (prefers-reduced-motion: no-preference)`]: () => {
+        const tween = gsap.to(track, {
+          id: 'horiz-anim',
+          x: () => -(track.scrollWidth - window.innerWidth),
+          ease: 'none',
+          scrollTrigger: {
+            trigger: section,
+            start: 'top top',
+            end: () => `+=${track.scrollWidth}`,
+            scrub: 1,
+            pin: true,
+            anticipatePin: 1,
+            invalidateOnRefresh: true,
+          },
+        });
 
-    const tween = gsap.to(track, {
-      id: 'horiz-anim',
-      x: () => -(track.scrollWidth - window.innerWidth),
-      ease: 'none',
-      scrollTrigger: {
-        trigger: section,
-        start: 'top top',
-        end: () => `+=${track.scrollWidth}`,
-        scrub: 1,
-        pin: true,
-        anticipatePin: 1,
-        invalidateOnRefresh: true,
+        cards.forEach((card) => {
+          gsap.fromTo(
+            card,
+            { scale: 0.9, opacity: 0.5 },
+            {
+              scale: 1,
+              opacity: 1,
+              ease: 'none',
+              scrollTrigger: {
+                trigger: card,
+                containerAnimation: tween,
+                start: 'left 80%',
+                end: 'left 40%',
+                scrub: true,
+              },
+            }
+          );
+        });
+      },
+      [BREAKPOINTS.reducedMotion]: () => {
+        gsap.set(cards, { opacity: 1, y: 0, scale: 1, clearProps: 'transform' });
       },
     });
 
-    cards.forEach((card) => {
-      gsap.fromTo(
-        card,
-        { scale: 0.9, opacity: 0.5 },
-        {
-          scale: 1,
-          opacity: 1,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: card,
-            containerAnimation: tween,
-            start: 'left 80%',
-            end: 'left 40%',
-            scrub: true,
-          },
-        }
-      );
-    });
+    ctx.add(revertMedia);
   });
 }
