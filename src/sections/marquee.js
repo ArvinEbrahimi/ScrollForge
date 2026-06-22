@@ -1,5 +1,6 @@
 import { gsap } from 'gsap';
 import { withSectionContext } from '../core/section-base.js';
+import { getLenis } from '../utils/lenis.js';
 
 export function initMarquee() {
   const section = document.querySelector('#marquee');
@@ -34,21 +35,42 @@ export function initMarquee() {
     const anim1 = gsap.to(track1, { x: '-50%', ease: 'none', duration: 20, repeat: -1 });
     const anim2 = gsap.fromTo(track2, { x: '-50%' }, { x: '0%', ease: 'none', duration: 20, repeat: -1 });
 
+    anim2.progress(0.25);
+
+    let hoverSlow = false;
+    let scrollVelocity = 0;
+
+    const applySpeed = () => {
+      const boost = Math.min(Math.abs(scrollVelocity) * 0.12, 1.8);
+      const mult = (hoverSlow ? 0.4 : 1) * (1 + boost);
+      anim1.timeScale(mult);
+      anim2.timeScale(mult);
+    };
+
     const onEnter = () => {
-      anim1.timeScale(0.4);
-      anim2.timeScale(0.4);
+      hoverSlow = true;
+      applySpeed();
     };
     const onLeave = () => {
-      anim1.timeScale(1);
-      anim2.timeScale(1);
+      hoverSlow = false;
+      applySpeed();
     };
 
     section.addEventListener('mouseenter', onEnter);
     section.addEventListener('mouseleave', onLeave);
 
+    const lenis = getLenis();
+    const onScroll = (e) => {
+      scrollVelocity = typeof e === 'object' && e?.velocity ? e.velocity : 0;
+      applySpeed();
+    };
+
+    if (lenis) lenis.on('scroll', onScroll);
+
     ctx.add(() => {
       section.removeEventListener('mouseenter', onEnter);
       section.removeEventListener('mouseleave', onLeave);
+      if (lenis) lenis.off('scroll', onScroll);
     });
   });
 }
