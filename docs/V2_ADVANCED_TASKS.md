@@ -253,7 +253,7 @@ Phase 6 — Ship
 
 ### V2-A08 — Custom Scrollbar + Progress Ring
 **Branch:** `feat/V2-A08-scroll-progress`  
-**Priority:** P1 · **Status:** ⬜  
+**Priority:** P1 · **Status:** ✅ Done  
 **Depends on:** A04
 
 **ایده:** scrollbar سفارشی نازک + حلقه progress دور viewport (مثل Apple Watch activity ring).
@@ -823,7 +823,7 @@ Phase 6 — Ship
 | A05 | `feat/V2-A05-section-veil` | merged | ✅ Done |
 | A06 | `feat/V2-A06-sound-design` | merged | ✅ Done |
 | A07 | `feat/V2-A07-theme-toggle` | merged | ✅ Done |
-| A08 | — | — | ⬜ Pending |
+| A08 | `feat/V2-A08-scroll-progress` | merged | ✅ Done |
 | A09 | — | — | ⬜ Pending |
 | A10 | — | — | ⬜ Pending |
 | A11 | — | — | ⬜ Pending |
