@@ -1,6 +1,7 @@
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { withSectionContext } from '../core/section-base.js';
+import { BREAKPOINTS, createMatchMedia } from '../utils/match-media.js';
 
 export function initPinnedReveal() {
   const section = document.querySelector('#pinned');
@@ -46,41 +47,79 @@ export function initPinnedReveal() {
     </div>
   `;
 
-  return withSectionContext(section, () => {
-    const panelEls = section.querySelectorAll('.pinned__panel');
+  const panelEls = section.querySelectorAll('.pinned__panel');
 
-    ScrollTrigger.create({
-      trigger: section,
-      start: 'top top',
-      end: 'bottom bottom',
-      pin: '.pinned__container',
-    });
+  return withSectionContext(section, (ctx) => {
+    const revertMedia = createMatchMedia({
+      [`${BREAKPOINTS.mobile} and (prefers-reduced-motion: no-preference)`]: () => {
+        gsap.set(panelEls, { opacity: 1, y: 0, clearProps: 'transform' });
 
-    gsap.to('.pinned__progress-fill', {
-      width: '100%',
-      ease: 'none',
-      scrollTrigger: {
-        trigger: section,
-        start: 'top top',
-        end: 'bottom bottom',
-        scrub: true,
+        panelEls.forEach((panel) => {
+          gsap.from(panel, {
+            opacity: 0,
+            y: 48,
+            duration: 0.7,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: panel,
+              start: 'top 85%',
+              toggleActions: 'play none none reverse',
+            },
+          });
+        });
+
+        gsap.to('.pinned__progress-fill', {
+          width: '100%',
+          ease: 'none',
+          scrollTrigger: {
+            trigger: section,
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: true,
+          },
+        });
+      },
+      [`(min-width: 769px) and (prefers-reduced-motion: no-preference)`]: () => {
+        ScrollTrigger.create({
+          trigger: section,
+          start: 'top top',
+          end: 'bottom bottom',
+          pin: '.pinned__container',
+        });
+
+        gsap.to('.pinned__progress-fill', {
+          width: '100%',
+          ease: 'none',
+          scrollTrigger: {
+            trigger: section,
+            start: 'top top',
+            end: 'bottom bottom',
+            scrub: true,
+          },
+        });
+
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: section,
+            start: 'top top',
+            end: 'bottom bottom',
+            scrub: true,
+          },
+        });
+
+        gsap.set(panelEls[0], { opacity: 1, y: 0 });
+
+        tl.to(panelEls[0], { opacity: 0, y: -60, duration: 1 }, 0.55)
+          .fromTo(panelEls[1], { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 1 }, 0.25)
+          .to(panelEls[1], { opacity: 0, y: -60, duration: 1 }, 1.55)
+          .fromTo(panelEls[2], { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 1 }, 1.25);
+      },
+      [BREAKPOINTS.reducedMotion]: () => {
+        gsap.set(panelEls, { opacity: 1, y: 0 });
+        gsap.set('.pinned__progress-fill', { width: '100%' });
       },
     });
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: section,
-        start: 'top top',
-        end: 'bottom bottom',
-        scrub: true,
-      },
-    });
-
-    gsap.set(panelEls[0], { opacity: 1, y: 0 });
-
-    tl.to(panelEls[0], { opacity: 0, y: -60, duration: 1 }, 0.55)
-      .fromTo(panelEls[1], { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 1 }, 0.25)
-      .to(panelEls[1], { opacity: 0, y: -60, duration: 1 }, 1.55)
-      .fromTo(panelEls[2], { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 1 }, 1.25);
+    ctx.add(revertMedia);
   });
 }
