@@ -78,11 +78,11 @@ export function initTestimonials() {
     });
   };
 
-  return withSectionContext(section, (ctx) => {
+  return withSectionContext(section, (ctx, add) => {
     dots.forEach((dot) => {
       const onClick = () => setSlide(Number(dot.dataset.dot));
       dot.addEventListener('click', onClick);
-      ctx.add(() => dot.removeEventListener('click', onClick));
+      add(() => dot.removeEventListener('click', onClick));
     });
 
     const revertMedia = createMatchMedia({
@@ -93,6 +93,7 @@ export function initTestimonials() {
             start: 'top top',
             end: `+=${QUOTES.length * 100}%`,
             pin: true,
+            pinReparent: true,
             scrub: 0.8,
             onUpdate: (self) => {
               const index = Math.min(
@@ -142,6 +143,6 @@ export function initTestimonials() {
       },
     });
 
-    ctx.add(revertMedia);
+    add(revertMedia);
   });
 }

@@ -4,9 +4,9 @@ import { BREAKPOINTS, createMatchMedia } from '../utils/match-media.js';
 
 const SEGMENTS = [
   'M 50,150 C 150,50 250,250 350,150',
-  'S 550,50 650,150',
-  'S 850,250 950,150',
-  'S 1100,50 1150,150',
+  'M 350,150 S 550,50 650,150',
+  'M 650,150 S 850,250 950,150',
+  'M 950,150 S 1100,50 1150,150',
 ];
 
 const MILESTONES = [
@@ -89,6 +89,5 @@ export function initSvgPath() {
     });
 
     gsap.set(labels, { y: 8 });
-    ctx.add(() => {});
   });
 }

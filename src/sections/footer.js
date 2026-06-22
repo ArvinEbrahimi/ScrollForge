@@ -43,7 +43,7 @@ export function initFooter() {
 
   const topBtn = footer.querySelector('.footer__top');
 
-  return withSectionContext(footer, (ctx) => {
+  return withSectionContext(footer, (ctx, add) => {
     const onTop = () => {
       const lenis = getLenis();
       if (lenis) {
@@ -54,7 +54,7 @@ export function initFooter() {
     };
 
     topBtn.addEventListener('click', onTop);
-    ctx.add(() => topBtn.removeEventListener('click', onTop));
+    add(() => topBtn.removeEventListener('click', onTop));
 
     gsap.from('.footer__inner > *', {
       y: 24,

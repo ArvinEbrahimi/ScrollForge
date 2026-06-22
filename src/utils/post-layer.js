@@ -1,4 +1,9 @@
+import { gsap } from 'gsap';
+
 /**
+ * Grain, vignette, velocity chromatic aberration (overlay only).
+ * Content skew lives in velocity-skew.js — never transform #smooth-content here.
+ * @param {import('lenis').default | null} lenis
  * @returns {(() => void) | null}
  */
 export function initPostLayer(lenis) {
@@ -10,14 +15,31 @@ export function initPostLayer(lenis) {
   document.body.appendChild(layer);
 
   if (!prefersReduced && lenis) {
+    let aberration = 0;
+    let currentAberration = 0;
+
     const onScroll = ({ velocity }) => {
-      const shift = Math.min(Math.abs(velocity) * 0.15, 3);
-      layer.style.setProperty('--aberration', `${shift}px`);
+      aberration = Math.min(Math.abs(velocity) * 0.1, 2);
     };
+
+    const onTick = () => {
+      currentAberration += (aberration - currentAberration) * 0.06;
+
+      if (currentAberration < 0.05) {
+        currentAberration = 0;
+        layer.style.removeProperty('transform');
+        return;
+      }
+
+      layer.style.transform = `translateX(${currentAberration.toFixed(2)}px)`;
+    };
+
     lenis.on('scroll', onScroll);
+    gsap.ticker.add(onTick);
 
     return () => {
       lenis.off('scroll', onScroll);
+      gsap.ticker.remove(onTick);
       layer.remove();
     };
   }

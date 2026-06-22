@@ -72,7 +72,7 @@ export function initPinnedReveal() {
     });
   };
 
-  return withSectionContext(section, (ctx) => {
+  return withSectionContext(section, (ctx, add) => {
     const revertMedia = createMatchMedia({
       [`${BREAKPOINTS.mobile} and (prefers-reduced-motion: no-preference)`]: () => {
         gsap.set(panelEls, { opacity: 1, y: 0, clearProps: 'transform' });
@@ -109,6 +109,7 @@ export function initPinnedReveal() {
           start: 'top top',
           end: 'bottom bottom',
           pin: '.pinned__container',
+          pinReparent: true,
         });
 
         gsap.to('.pinned__progress-fill', {
@@ -162,14 +163,19 @@ export function initPinnedReveal() {
           };
 
           const onLeave = () => {
-            rotX(0);
-            rotY(0);
+            gsap.to(visual, {
+              rotateX: 0,
+              rotateY: 0,
+              duration: 0.45,
+              ease: 'power2.out',
+              overwrite: 'auto',
+            });
           };
 
           panel.addEventListener('mousemove', onMove);
           panel.addEventListener('mouseleave', onLeave);
 
-          ctx.add(() => {
+          add(() => {
             panel.removeEventListener('mousemove', onMove);
             panel.removeEventListener('mouseleave', onLeave);
           });
@@ -181,6 +187,6 @@ export function initPinnedReveal() {
       },
     });
 
-    ctx.add(revertMedia);
+    add(revertMedia);
   });
 }

@@ -49,7 +49,7 @@ export function initStaggerCards() {
 
   const cardEls = section.querySelectorAll('.cards__card');
 
-  return withSectionContext(section, (ctx) => {
+  return withSectionContext(section, (ctx, add) => {
     ScrollTrigger.batch(cardEls, {
       start: 'top 85%',
       onEnter: (elements) => {
@@ -89,21 +89,22 @@ export function initStaggerCards() {
       };
 
       const onLeave = () => {
-        rotX(0);
-        rotY(0);
         gsap.to(card, {
+          rotateX: 0,
+          rotateY: 0,
           y: 0,
           borderColor: 'var(--border)',
           boxShadow: '0 0 0 rgba(0, 0, 0, 0)',
           duration: 0.3,
           ease: 'power2.out',
+          overwrite: 'auto',
         });
       };
 
       card.addEventListener('mousemove', onMove);
       card.addEventListener('mouseleave', onLeave);
 
-      ctx.add(() => {
+      add(() => {
         card.removeEventListener('mousemove', onMove);
         card.removeEventListener('mouseleave', onLeave);
       });
