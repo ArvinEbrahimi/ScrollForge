@@ -160,7 +160,7 @@ Phase 6 — Ship
 
 ### V2-A03 — Asset Preloader (Real Progress)
 **Branch:** `feat/V2-A03-asset-preloader`  
-**Priority:** P0 · **Status:** ⬜  
+**Priority:** P0 · **Status:** ✅ Done  
 **Depends on:** A01
 
 **ایده:** جایگزینی loader ساده accent با preloader حرفه‌ای — progress bar واقعی بر اساس load فونت‌ها و media.
@@ -758,7 +758,7 @@ Phase 6 — Ship
 Phase 0 — Foundation
 [✓] A01  Scroll orchestrator + gsap.context cleanup
 [✓] A02  ScrollTrigger.matchMedia system
-[ ] A03  Real asset preloader
+[✓] A03  Real asset preloader
 [ ] A04  Global scroll progress nav
 [ ] A05  Section transition veil
 
@@ -818,7 +818,7 @@ Phase 6 — Ship
 |------|--------|-----|--------|
 | A01 | `feat/V2-A01-scroll-orchestrator` | merged | ✅ Done |
 | A02 | `feat/V2-A02-match-media` | merged | ✅ Done |
-| A03 | — | — | ⬜ Pending |
+| A03 | `feat/V2-A03-asset-preloader` | merged | ✅ Done |
 | A04 | — | — | ⬜ Pending |
 | A05 | — | — | ⬜ Pending |
 | A06 | — | — | ⬜ Pending |

@@ -6,6 +6,7 @@ import 'lenis/dist/lenis.css';
 import './style.css';
 
 import { ScrollOrchestrator } from './core/orchestrator.js';
+import { initPreloader } from './utils/preloader.js';
 import { initLenis } from './utils/lenis.js';
 import { initCursor } from './utils/cursor.js';
 import { initHero } from './sections/hero.js';
@@ -31,7 +32,15 @@ orchestrator
   .register('cards', initStaggerCards)
   .register('outro', initOutro);
 
-document.addEventListener('DOMContentLoaded', () => {
+async function boot() {
+  document.body.classList.add('is-loading');
+
+  try {
+    await initPreloader();
+  } finally {
+    document.body.classList.remove('is-loading');
+  }
+
   initLenis();
   orchestrator.initAll();
   initCursor();
@@ -41,6 +50,10 @@ document.addEventListener('DOMContentLoaded', () => {
   if (import.meta.env.DEV) {
     orchestrator.mountDebugPanel();
   }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  boot();
 });
 
 if (import.meta.hot) {
