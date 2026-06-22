@@ -237,7 +237,7 @@ Phase 6 — Ship
 
 ### V2-A07 — Theme Toggle (GSAP Color Morph)
 **Branch:** `feat/V2-A07-theme-toggle`  
-**Priority:** P1 · **Status:** ⬜  
+**Priority:** P1 · **Status:** ✅ Done  
 **Depends on:** A02
 
 **ایده:** dark (فعلی) ↔ light با morph تمام CSS variables توسط GSAP — نه snap.
@@ -822,7 +822,7 @@ Phase 6 — Ship
 | A04 | `feat/V2-A04-scroll-nav` | merged | ✅ Done |
 | A05 | `feat/V2-A05-section-veil` | merged | ✅ Done |
 | A06 | `feat/V2-A06-sound-design` | merged | ✅ Done |
-| A07 | — | — | ⬜ Pending |
+| A07 | `feat/V2-A07-theme-toggle` | merged | ✅ Done |
 | A08 | — | — | ⬜ Pending |
 | A09 | — | — | ⬜ Pending |
 | A10 | — | — | ⬜ Pending |
