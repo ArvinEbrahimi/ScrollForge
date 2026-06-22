@@ -736,3 +736,61 @@ button:focus-visible {
     display: none !important;
   }
 }
+
+/* --- Dev Debug Panel (V2-A01) --------------------------------------------- */
+
+.sf-debug {
+  position: fixed;
+  bottom: 1rem;
+  left: 1rem;
+  z-index: 10001;
+  padding: 0.75rem 1rem;
+  font-family: var(--font-body);
+  font-size: 11px;
+  color: var(--text-primary);
+  background: rgba(17, 17, 17, 0.92);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  backdrop-filter: blur(8px);
+  pointer-events: auto;
+}
+
+.sf-debug__title {
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+.sf-debug__stat {
+  color: var(--text-muted);
+  margin-bottom: 0.25rem;
+}
+
+.sf-debug__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.5rem;
+}
+
+.sf-debug__actions button {
+  padding: 0.25rem 0.5rem;
+  font-family: var(--font-display);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--bg);
+  background: var(--accent);
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+
+.sf-debug__actions button:hover {
+  background: var(--accent-dim);
+}
