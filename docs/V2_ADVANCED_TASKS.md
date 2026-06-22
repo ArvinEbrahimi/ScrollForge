@@ -298,7 +298,7 @@ Phase 6 — Ship
 
 ### V2-A11 — Three.js Particle Field (Hero Background)
 **Branch:** `feat/V2-A11-hero-particles`  
-**Priority:** P0 · **Status:** ⬜  
+**Priority:** P0 · **Status:** ✅ Done  
 **Depends on:** A01, A03
 
 **ایده:** میدان particle سبز acid روی near-black — react به mouse و scroll. سبک Active Theory.
@@ -320,7 +320,7 @@ Phase 6 — Ship
 
 ### V2-A12 — Text Scramble + Decode Entrance
 **Branch:** `feat/V2-A12-hero-scramble`  
-**Priority:** P1 · **Status:** ⬜  
+**Priority:** P1 · **Status:** ✅ Done  
 **Depends on:** A03, A11
 
 **ایده:** قبل از per-char reveal، یک فاز scramble/decode (کاراکترهای random → SCROLL EXPERIENCE).
@@ -335,7 +335,7 @@ Phase 6 — Ship
 
 ### V2-A13 — Multi-Layer Depth Parallax
 **Branch:** `feat/V2-A13-hero-depth`  
-**Priority:** P1 · **Status:** ⬜  
+**Priority:** P1 · **Status:** ✅ Done  
 **Depends on:** A11
 
 **ایده:** ۳ لایه depth — grid، particles، typography — هر کدام speed متفاوت.
@@ -350,7 +350,7 @@ Phase 6 — Ship
 
 ### V2-A14 — Hero Showreel Trigger
 **Branch:** `feat/V2-A14-hero-reel`  
-**Priority:** P2 · **Status:** ⬜  
+**Priority:** P2 · **Status:** ✅ Done  
 **Depends on:** A12
 
 **ایده:** دکمه `WATCH REEL` — fullscreen video overlay با GSAP scale-from-dot transition.
@@ -770,10 +770,10 @@ Phase 1 — Global UX
 [✓] A10  Grain + vignette post-layer
 
 Phase 2 — Hero 2.0
-[ ] A11  Three.js particle field
-[ ] A12  Text scramble entrance
-[ ] A13  Multi-layer depth parallax
-[ ] A14  Showreel video modal
+[✓] A11  Three.js particle field
+[✓] A12  Text scramble entrance
+[✓] A13  Multi-layer depth parallax
+[✓] A14  Showreel video modal
 
 Phase 3 — Section Upgrades
 [ ] A15  Velocity-reactive marquee
@@ -826,10 +826,10 @@ Phase 6 — Ship
 | A08 | `feat/V2-A08-scroll-progress` | merged | ✅ Done |
 | A09 | `feat/V2-A09-seo-meta` | merged | ✅ Done |
 | A10 | `feat/V2-A10-post-layer` | merged | ✅ Done |
-| A11 | — | — | ⬜ Pending |
-| A12 | — | — | ⬜ Pending |
-| A13 | — | — | ⬜ Pending |
-| A14 | — | — | ⬜ Pending |
+| A11 | `feat/V2-A11-hero-particles` | merged | ✅ Done |
+| A12 | `feat/V2-A12-hero-scramble` | merged | ✅ Done |
+| A13 | `feat/V2-A13-hero-depth` | merged | ✅ Done |
+| A14 | `feat/V2-A14-hero-reel` | merged | ✅ Done |
 | A15 | — | — | ⬜ Pending |
 | A16 | — | — | ⬜ Pending |
 | A17 | — | — | ⬜ Pending |
