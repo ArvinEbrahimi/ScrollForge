@@ -18,6 +18,7 @@ import { initPostLayer } from './utils/post-layer.js';
 import { initKeyboardNav } from './utils/keyboard-nav.js';
 import { initVelocitySkew } from './utils/velocity-skew.js';
 import { initEasterEgg } from './utils/easter-egg.js';
+import { initMicroInteractions } from './utils/micro-interactions.js';
 import { initHero } from './sections/hero.js';
 import { initMarquee } from './sections/marquee.js';
 import { initPinnedReveal } from './sections/pinned-reveal.js';
@@ -67,21 +68,24 @@ let destroyVelocitySkew = null;
 /** @type {(() => void) | null} */
 let destroyEasterEgg = null;
 
+/** @type {(() => void) | null} */
+let destroyMicroInteractions = null;
+
 orchestrator
   .register('hero', initHero)
   .register('marquee', initMarquee)
   .register('pinned', initPinnedReveal)
-  .register('horizontal', initHorizontalScroll)
-  .register('text-reveal', initTextReveal)
-  .register('svg-path', initSvgPath)
-  .register('cards', initStaggerCards)
-  .register('stats', initStats)
-  .register('process', initProcess)
-  .register('stack', initStackOrbit)
-  .register('testimonials', initTestimonials)
-  .register('contact', initContactForm)
-  .register('outro', initOutro)
-  .register('footer', initFooter);
+  .register('horizontal', initHorizontalScroll, { lazy: true })
+  .register('text-reveal', initTextReveal, { lazy: true })
+  .register('svg-path', initSvgPath, { lazy: true })
+  .register('cards', initStaggerCards, { lazy: true })
+  .register('stats', initStats, { lazy: true })
+  .register('process', initProcess, { lazy: true })
+  .register('stack', initStackOrbit, { lazy: true })
+  .register('testimonials', initTestimonials, { lazy: true })
+  .register('contact', initContactForm, { lazy: true })
+  .register('outro', initOutro, { lazy: true })
+  .register('footer', initFooter, { lazy: true });
 
 async function boot() {
   document.body.classList.add('is-loading');
@@ -106,6 +110,7 @@ async function boot() {
   destroyKeyboardNav = initKeyboardNav(lenis);
   destroyVelocitySkew = initVelocitySkew(lenis);
   destroyEasterEgg = initEasterEgg(orchestrator);
+  destroyMicroInteractions = initMicroInteractions();
 
   requestAnimationFrame(() => orchestrator.refresh());
 
@@ -121,6 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
 if (import.meta.hot) {
   import.meta.hot.dispose(() => {
     destroyEasterEgg?.();
+    destroyMicroInteractions?.();
     destroyVelocitySkew?.();
     destroyKeyboardNav?.();
     destroyCursor?.();

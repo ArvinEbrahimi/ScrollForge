@@ -2,7 +2,7 @@
 
 > **Workflow rule:** هر تسک = یک branch جدا → commit → push → PR → merge به `main`.  
 > **Agent rule:** همیشه مثل senior fullstack developer عمل کن — کد تمیز، scope محدود، PRهای کوچک و قابل review.  
-> **V1 تکمیل شده ✅** — ارتقاهای V2: [`V2_ADVANCED_TASKS.md`](./V2_ADVANCED_TASKS.md)
+> **V1 تکمیل شده ✅** — **V2 تکمیل شده ✅ (v2.0.0)** — جزئیات: [`V2_ADVANCED_TASKS.md`](./V2_ADVANCED_TASKS.md)
 
 ---
 
@@ -423,6 +423,19 @@ For a single developer/agent, this order minimizes rework:
 | T12 | `feat/T12-outro` | merged | ✅ Done |
 | T13 | `feat/T13-responsive-a11y` | merged | ✅ Done |
 | T14 | `feat/T14-readme-qa` | merged | ✅ Done |
+
+## V2 Sign-off (v2.0.0)
+
+**Release:** `v2.0.0` · **Branch:** `feat/V2-A33-phase6-ship`  
+**Scope:** A01–A40 complete — see [`V2_ADVANCED_TASKS.md`](./V2_ADVANCED_TASKS.md)
+
+| Deliverable | Status |
+|-------------|--------|
+| 15 scroll sections + footer | ✅ |
+| Lazy section init (orchestrator) | ✅ |
+| CI + Lighthouse + GitHub Pages deploy | ✅ |
+| README v2 + QA matrix + showcase | ✅ |
+| Live: scrollforge.arvinebrahimi.dev | ✅ |
 
 > این جدول بعد از هر PR merge به‌روز می‌شود.
 
