@@ -8,31 +8,75 @@ export class ScrollOrchestrator {
   /** @type {{ id: string, destroy: () => void }[]} */
   #instances = [];
 
+  /** @type {IntersectionObserver[]} */
+  #lazyObservers = [];
+
   #debugPanel = null;
 
   /**
    * @param {string} id
    * @param {() => (() => void) | null} initFn
+   * @param {{ lazy?: boolean }} [options]
    */
-  register(id, initFn) {
-    this.#sections.push({ id, init: initFn });
+  register(id, initFn, options = {}) {
+    this.#sections.push({ id, init: initFn, lazy: options.lazy ?? false });
     return this;
   }
 
   initAll() {
     this.destroyAll();
 
-    for (const { id, init } of this.#sections) {
-      const destroy = init();
-      if (typeof destroy === 'function') {
-        this.#instances.push({ id, destroy });
+    for (const section of this.#sections) {
+      if (section.lazy) {
+        this.#observeLazy(section);
+      } else {
+        this.#initOne(section);
       }
     }
 
     this.#updateDebugPanel();
   }
 
+  /**
+   * @param {{ id: string, init: () => (() => void) | null }} section
+   */
+  #initOne(section) {
+    if (this.#instances.some((i) => i.id === section.id)) return;
+
+    const destroy = section.init();
+    if (typeof destroy === 'function') {
+      this.#instances.push({ id: section.id, destroy });
+    }
+  }
+
+  /**
+   * @param {{ id: string, init: () => (() => void) | null }} section
+   */
+  #observeLazy(section) {
+    const el = document.getElementById(section.id);
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (!entries[0]?.isIntersecting) return;
+        observer.disconnect();
+        this.#initOne(section);
+        requestAnimationFrame(() => {
+          ScrollTrigger.refresh();
+          this.#updateDebugPanel();
+        });
+      },
+      { rootMargin: '50% 0px', threshold: 0 }
+    );
+
+    observer.observe(el);
+    this.#lazyObservers.push(observer);
+  }
+
   destroyAll() {
+    this.#lazyObservers.forEach((observer) => observer.disconnect());
+    this.#lazyObservers = [];
+
     for (const { destroy } of this.#instances) {
       destroy();
     }
@@ -58,6 +102,7 @@ export class ScrollOrchestrator {
     return {
       sections: this.#instances.length,
       scrollTriggers: ScrollTrigger.getAll().length,
+      registered: this.#sections.length,
     };
   }
 

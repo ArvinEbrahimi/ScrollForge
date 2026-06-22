@@ -643,7 +643,7 @@ Phase 6 — Ship
 
 ### V2-A33 — Performance Audit & Fixes
 **Branch:** `feat/V2-A33-perf-audit`  
-**Priority:** P0 · **Status:** ⬜  
+**Priority:** P0 · **Status:** ✅ Done  
 **Depends on:** A11, A17 (after heavy assets)
 
 **Scope:**
@@ -657,7 +657,7 @@ Phase 6 — Ship
 
 ### V2-A34 — Cross-Browser QA Matrix
 **Branch:** `feat/V2-A34-qa-matrix`  
-**Priority:** P0 · **Status:** ⬜  
+**Priority:** P0 · **Status:** ✅ Done  
 **Depends on:** A33
 
 **Scope:**
@@ -670,7 +670,7 @@ Phase 6 — Ship
 
 ### V2-A35 — README v2 + Showcase Assets
 **Branch:** `feat/V2-A35-readme-v2`  
-**Priority:** P1 · **Status:** ⬜  
+**Priority:** P1 · **Status:** ✅ Done  
 **Depends on:** A36
 
 **Scope:**
@@ -682,7 +682,7 @@ Phase 6 — Ship
 
 ### V2-A36 — Production Deploy
 **Branch:** `feat/V2-A36-deploy`  
-**Priority:** P0 · **Status:** ⬜  
+**Priority:** P0 · **Status:** ✅ Done  
 **Depends on:** A33
 
 **Scope:**
@@ -695,7 +695,7 @@ Phase 6 — Ship
 
 ### V2-A37 — Lighthouse CI Gate
 **Branch:** `feat/V2-A37-lighthouse-ci`  
-**Priority:** P1 · **Status:** ⬜  
+**Priority:** P1 · **Status:** ✅ Done  
 **Depends on:** A36
 
 **Scope:**
@@ -707,7 +707,7 @@ Phase 6 — Ship
 
 ### V2-A38 — Micro-Interactions Pass
 **Branch:** `feat/V2-A38-micro-interactions`  
-**Priority:** P2 · **Status:** ⬜  
+**Priority:** P2 · **Status:** ✅ Done  
 **Depends on:** A20, A26
 
 **Buffer task:** pass نهایی روی همه button/link hover states، ripple، haptic (`navigator.vibrate` mobile).
@@ -716,7 +716,7 @@ Phase 6 — Ship
 
 ### V2-A39 — Content & Copy Polish
 **Branch:** `feat/V2-A39-copy-polish`  
-**Priority:** P2 · **Status:** ⬜  
+**Priority:** P2 · **Status:** ✅ Done  
 **Depends on:** A22–A27
 
 **Buffer task:** rewrite همه copy به tone حرفه‌ای agency؛ فارسی/انگلیسی consistency.
@@ -725,7 +725,7 @@ Phase 6 — Ship
 
 ### V2-A40 — Final V2 QA & Sign-off
 **Branch:** `feat/V2-A40-v2-signoff`  
-**Priority:** P0 · **Status:** ⬜  
+**Priority:** P0 · **Status:** ✅ Done  
 **Depends on:** ALL
 
 **Scope:**
@@ -800,14 +800,14 @@ Phase 5 — Interaction
 [✓] A32  Easter egg
 
 Phase 6 — Ship
-[ ] A33  Performance audit
-[ ] A34  Cross-browser QA
-[ ] A35  README v2
-[ ] A36  Production deploy
-[ ] A37  Lighthouse CI
-[ ] A38  Micro-interactions pass
-[ ] A39  Copy polish
-[ ] A40  V2 sign-off
+[✓] A33  Performance audit
+[✓] A34  Cross-browser QA
+[✓] A35  README v2
+[✓] A36  Production deploy
+[✓] A37  Lighthouse CI
+[✓] A38  Micro-interactions pass
+[✓] A39  Copy polish
+[✓] A40  V2 sign-off
 ```
 
 ---
@@ -848,14 +848,14 @@ Phase 6 — Ship
 | A30 | `feat/V2-A28-phase5-interactions` | merged | ✅ Done |
 | A31 | `feat/V2-A28-phase5-interactions` | merged | ✅ Done |
 | A32 | `feat/V2-A28-phase5-interactions` | merged | ✅ Done |
-| A33 | — | — | ⬜ Pending |
-| A34 | — | — | ⬜ Pending |
-| A35 | — | — | ⬜ Pending |
-| A36 | — | — | ⬜ Pending |
-| A37 | — | — | ⬜ Pending |
-| A38 | — | — | ⬜ Pending |
-| A39 | — | — | ⬜ Pending |
-| A40 | — | — | ⬜ Pending |
+| A33 | `feat/V2-A33-phase6-ship` | merged | ✅ Done |
+| A34 | `feat/V2-A33-phase6-ship` | merged | ✅ Done |
+| A35 | `feat/V2-A33-phase6-ship` | merged | ✅ Done |
+| A36 | `feat/V2-A33-phase6-ship` | merged | ✅ Done |
+| A37 | `feat/V2-A33-phase6-ship` | merged | ✅ Done |
+| A38 | `feat/V2-A33-phase6-ship` | merged | ✅ Done |
+| A39 | `feat/V2-A33-phase6-ship` | merged | ✅ Done |
+| A40 | `feat/V2-A33-phase6-ship` | merged | ✅ Done |
 
 ---
 
