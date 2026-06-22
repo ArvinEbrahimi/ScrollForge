@@ -2,21 +2,69 @@ import { gsap } from 'gsap';
 import { withSectionContext } from '../core/section-base.js';
 import { getLenis } from '../utils/lenis.js';
 
+const TECH_NAMES = [
+  'GSAP',
+  'ScrollTrigger',
+  'Three.js',
+  'WebGL',
+  'React',
+  'Next.js',
+  'Django',
+  'Framer Motion',
+  'TypeScript',
+  'PostgreSQL',
+  'Docker',
+  'WebRTC',
+  'Redis',
+];
+
+/** @type {HTMLElement | null} */
+let marqueeSection = null;
+
+const accentize = (text) => text.replace(/·/g, '<span class="marquee__sep">·</span>');
+
+const wrapTech = (text) => {
+  let html = accentize(text);
+  TECH_NAMES.forEach((name) => {
+    const re = new RegExp(name.replace('.', '\\.'), 'g');
+    html = html.replace(re, `<span class="marquee__tech" data-tech="${name}">${name}</span>`);
+  });
+  return html;
+};
+
+/**
+ * @param {string} tech
+ */
+export function highlightMarqueeTech(tech) {
+  if (!marqueeSection) return;
+
+  marqueeSection.classList.add('is-filtering');
+  marqueeSection.querySelectorAll('.marquee__tech').forEach((el) => {
+    el.classList.toggle('is-highlighted', el.dataset.tech === tech);
+  });
+
+  window.setTimeout(() => {
+    marqueeSection?.classList.remove('is-filtering');
+    marqueeSection?.querySelectorAll('.marquee__tech.is-highlighted').forEach((el) => {
+      el.classList.remove('is-highlighted');
+    });
+  }, 3200);
+}
+
 export function initMarquee() {
   const section = document.querySelector('#marquee');
   if (!section) return null;
+
+  marqueeSection = section;
 
   const row1Items = 'GSAP · ScrollTrigger · Three.js · WebGL · React · Next.js · Django · ';
   const row2Items = 'Framer Motion · TypeScript · PostgreSQL · Docker · WebRTC · Redis · ';
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  const accentize = (text) =>
-    text.replace(/·/g, '<span class="marquee__sep">·</span>');
-
   const buildRow = (text) => `
     <div class="marquee__track">
-      <span class="marquee__content">${accentize(text.repeat(4))}</span>
-      <span class="marquee__content" aria-hidden="true">${accentize(text.repeat(4))}</span>
+      <span class="marquee__content">${wrapTech(text.repeat(4))}</span>
+      <span class="marquee__content" aria-hidden="true">${wrapTech(text.repeat(4))}</span>
     </div>
   `;
 

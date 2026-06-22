@@ -22,7 +22,13 @@ import { initHorizontalScroll } from './sections/horizontal-scroll.js';
 import { initTextReveal } from './sections/text-reveal.js';
 import { initSvgPath } from './sections/svg-path.js';
 import { initStaggerCards } from './sections/stagger-cards.js';
+import { initStats } from './sections/stats.js';
+import { initProcess } from './sections/process.js';
+import { initStackOrbit } from './sections/stack-orbit.js';
+import { initTestimonials } from './sections/testimonials.js';
+import { initContactForm } from './sections/contact-form.js';
 import { initOutro } from './sections/outro.js';
+import { initFooter } from './sections/footer.js';
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
@@ -54,7 +60,13 @@ orchestrator
   .register('text-reveal', initTextReveal)
   .register('svg-path', initSvgPath)
   .register('cards', initStaggerCards)
-  .register('outro', initOutro);
+  .register('stats', initStats)
+  .register('process', initProcess)
+  .register('stack', initStackOrbit)
+  .register('testimonials', initTestimonials)
+  .register('contact', initContactForm)
+  .register('outro', initOutro)
+  .register('footer', initFooter);
 
 async function boot() {
   document.body.classList.add('is-loading');
