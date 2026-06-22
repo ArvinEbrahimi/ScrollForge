@@ -221,7 +221,7 @@ public/fonts/.gitkeep
 
 ### T08 — Horizontal Scroll Section
 **Branch:** `feat/T08-horizontal-scroll`  
-**Status:** ⬜ Pending  
+**Status:** ✅ Done  
 **Depends on:** T03, T04 (for data-cursor)
 
 **Scope:**
@@ -415,7 +415,7 @@ For a single developer/agent, this order minimizes rework:
 | T05 | `feat/T05-hero` | merged | ✅ Done |
 | T06 | `feat/T06-marquee` | merged | ✅ Done |
 | T07 | `feat/T07-pinned-reveal` | merged | ✅ Done |
-| T08 | — | — | ⬜ Pending |
+| T08 | `feat/T08-horizontal-scroll` | merged | ✅ Done |
 | T09 | — | — | ⬜ Pending |
 | T10 | — | — | ⬜ Pending |
 | T11 | — | — | ⬜ Pending |
