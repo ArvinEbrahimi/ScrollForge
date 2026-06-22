@@ -1049,3 +1049,54 @@ button:focus-visible {
   transform-origin: left center;
   will-change: transform, opacity;
 }
+
+/* --- Site Controls (V2-A06) ------------------------------------------------ */
+
+.site-controls {
+  position: fixed;
+  top: clamp(1rem, 3vw, 2rem);
+  left: clamp(1rem, 3vw, 2rem);
+  z-index: 9001;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.site-controls__btn {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--text-muted);
+  background: rgba(17, 17, 17, 0.85);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: color 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+  backdrop-filter: blur(8px);
+}
+
+.site-controls__btn:hover,
+.site-controls__btn.is-active {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.site-controls__btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.site-controls__icon--on {
+  display: none;
+}
+
+.site-controls__btn.is-active .site-controls__icon--off {
+  display: none;
+}
+
+.site-controls__btn.is-active .site-controls__icon--on {
+  display: inline;
+}

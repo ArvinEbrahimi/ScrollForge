@@ -1,6 +1,7 @@
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { SECTION_NAV } from './scroll-nav.js';
+import { sound } from './sound.js';
 
 /**
  * @returns {(() => void) | null}
@@ -37,6 +38,7 @@ export function initSectionVeil() {
 }
 
 function playVeil(veil) {
+  sound.chime();
   gsap.killTweensOf(veil);
 
   gsap.fromTo(

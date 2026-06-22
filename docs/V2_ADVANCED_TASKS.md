@@ -221,7 +221,7 @@ Phase 6 — Ship
 
 ### V2-A06 — Sound Design (Opt-in)
 **Branch:** `feat/V2-A06-sound-design`  
-**Priority:** P2 · **Status:** ⬜  
+**Priority:** P2 · **Status:** ✅ Done  
 **Depends on:** A04
 
 **ایده:** subtle UI sounds — hover tick، scroll whoosh، section enter chime. کاملاً opt-in.
@@ -821,7 +821,7 @@ Phase 6 — Ship
 | A03 | `feat/V2-A03-asset-preloader` | merged | ✅ Done |
 | A04 | `feat/V2-A04-scroll-nav` | merged | ✅ Done |
 | A05 | `feat/V2-A05-section-veil` | merged | ✅ Done |
-| A06 | — | — | ⬜ Pending |
+| A06 | `feat/V2-A06-sound-design` | merged | ✅ Done |
 | A07 | — | — | ⬜ Pending |
 | A08 | — | — | ⬜ Pending |
 | A09 | — | — | ⬜ Pending |
