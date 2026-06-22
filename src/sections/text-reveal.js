@@ -1,4 +1,5 @@
 import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { withSectionContext } from '../core/section-base.js';
 
 export function initTextReveal() {
@@ -22,21 +23,19 @@ export function initTextReveal() {
   const wordEls = section.querySelectorAll('.reveal-word');
 
   return withSectionContext(section, () => {
-    gsap.fromTo(
-      wordEls,
-      { opacity: 0.15, color: 'var(--text-muted)' },
-      {
-        opacity: 1,
-        color: 'var(--text-primary)',
-        stagger: 0.05,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: section,
-          start: 'top 80%',
-          end: 'bottom 20%',
-          scrub: 1,
+    wordEls.forEach((word, i) => {
+      ScrollTrigger.create({
+        trigger: word,
+        start: 'top 85%',
+        end: 'top 55%',
+        scrub: true,
+        onUpdate: (self) => {
+          const active = self.progress > 0.5;
+          const past = self.progress >= 1;
+          word.classList.toggle('is-active', active && !past);
+          word.classList.toggle('is-past', past);
         },
-      }
-    );
+      });
+    });
   });
 }
