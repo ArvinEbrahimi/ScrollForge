@@ -157,7 +157,7 @@ public/fonts/.gitkeep
 
 ### T05 — Hero Section
 **Branch:** `feat/T05-hero`  
-**Status:** ⬜ Pending  
+**Status:** ✅ Done  
 **Depends on:** T03 (recommended), T02
 
 **Scope:**
@@ -412,7 +412,7 @@ For a single developer/agent, this order minimizes rework:
 | T02 | `feat/T02-design-system` | merged | ✅ Done |
 | T03 | `feat/T03-lenis` | merged | ✅ Done |
 | T04 | `feat/T04-cursor` | merged | ✅ Done |
-| T05 | — | — | ⬜ Pending |
+| T05 | `feat/T05-hero` | merged | ✅ Done |
 | T06 | — | — | ⬜ Pending |
 | T07 | — | — | ⬜ Pending |
 | T08 | — | — | ⬜ Pending |
