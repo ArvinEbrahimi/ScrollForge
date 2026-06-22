@@ -1,12 +1,14 @@
 {
   "name": "scrollforge",
   "private": true,
-  "version": "1.0.0",
+  "version": "2.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "preview:ci": "vite preview --port 4173 --strictPort",
+    "lighthouse": "npm run build && npx --yes @lhci/cli@0.14.0 autorun"
   },
   "dependencies": {
     "gsap": "^3.12.5",
