@@ -1,8 +1,9 @@
 import { gsap } from 'gsap';
+import { withSectionContext } from '../core/section-base.js';
 
 export function initHero() {
   const section = document.querySelector('#hero');
-  if (!section) return;
+  if (!section) return null;
 
   section.innerHTML = `
     <div class="hero__grid"></div>
@@ -26,49 +27,51 @@ export function initHero() {
   const loader = document.querySelector('.loader');
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  const tl = gsap.timeline({
-    defaults: { ease: 'power4.out' },
-    delay: prefersReduced ? 0 : 0.3,
-  });
+  return withSectionContext(section, () => {
+    const tl = gsap.timeline({
+      defaults: { ease: 'power4.out' },
+      delay: prefersReduced ? 0 : 0.3,
+    });
 
-  if (loader && !prefersReduced) {
-    tl.to(loader, {
-      y: '-100%',
+    if (loader && !prefersReduced) {
+      tl.to(loader, {
+        y: '-100%',
+        duration: 1,
+        ease: 'power4.inOut',
+      });
+    } else if (loader) {
+      loader.style.display = 'none';
+    }
+
+    tl.from('.hero__char', {
+      y: 120,
+      opacity: 0,
       duration: 1,
-      ease: 'power4.inOut',
+      stagger: 0.04,
+    }, prefersReduced ? 0 : '-=0.3')
+      .from('.hero__sub', { opacity: 0, y: 20, duration: 0.8 }, '-=0.4')
+      .from('.hero__scroll-indicator', { opacity: 0, duration: 0.6 }, '-=0.2')
+      .to('.hero__grid', { opacity: 0.15, duration: 2 }, 0);
+
+    gsap.to('.hero__content', {
+      y: -200,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: section,
+        start: 'top top',
+        end: 'bottom top',
+        scrub: 1,
+      },
     });
-  } else if (loader) {
-    loader.style.display = 'none';
-  }
 
-  tl.from('.hero__char', {
-    y: 120,
-    opacity: 0,
-    duration: 1,
-    stagger: 0.04,
-  }, prefersReduced ? 0 : '-=0.3')
-    .from('.hero__sub', { opacity: 0, y: 20, duration: 0.8 }, '-=0.4')
-    .from('.hero__scroll-indicator', { opacity: 0, duration: 0.6 }, '-=0.2')
-    .to('.hero__grid', { opacity: 0.15, duration: 2 }, 0);
-
-  gsap.to('.hero__content', {
-    y: -200,
-    ease: 'none',
-    scrollTrigger: {
-      trigger: '#hero',
-      start: 'top top',
-      end: 'bottom top',
-      scrub: 1,
-    },
+    if (!prefersReduced) {
+      gsap.to('.hero__arrow', {
+        y: 10,
+        repeat: -1,
+        yoyo: true,
+        ease: 'power1.inOut',
+        duration: 0.8,
+      });
+    }
   });
-
-  if (!prefersReduced) {
-    gsap.to('.hero__arrow', {
-      y: 10,
-      repeat: -1,
-      yoyo: true,
-      ease: 'power1.inOut',
-      duration: 0.8,
-    });
-  }
 }

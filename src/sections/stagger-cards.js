@@ -1,8 +1,10 @@
 import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { withSectionContext } from '../core/section-base.js';
 
 export function initStaggerCards() {
   const section = document.querySelector('#cards');
-  if (!section) return;
+  if (!section) return null;
 
   const cards = [
     { icon: '⚡', title: 'Performance', desc: 'GPU-friendly transforms, minimal layout thrash.' },
@@ -31,36 +33,47 @@ export function initStaggerCards() {
 
   const cardEls = section.querySelectorAll('.cards__card');
 
-  gsap.from(cardEls, {
-    y: 80,
-    opacity: 0,
-    duration: 0.8,
-    stagger: 0.1,
-    ease: 'power3.out',
-    scrollTrigger: {
-      trigger: section,
-      start: 'top 75%',
-    },
-  });
-
-  cardEls.forEach((card) => {
-    card.addEventListener('mouseenter', () => {
-      gsap.to(card, {
-        y: -8,
-        borderColor: 'var(--accent)',
-        boxShadow: '0 20px 40px rgba(0, 0, 0, 0.4)',
-        duration: 0.3,
-        ease: 'power2.out',
-      });
+  return withSectionContext(section, (ctx) => {
+    ScrollTrigger.batch(cardEls, {
+      start: 'top 85%',
+      onEnter: (elements) => {
+        gsap.from(elements, {
+          y: 80,
+          opacity: 0,
+          duration: 0.8,
+          stagger: 0.1,
+          ease: 'power3.out',
+        });
+      },
+      once: true,
     });
 
-    card.addEventListener('mouseleave', () => {
-      gsap.to(card, {
-        y: 0,
-        borderColor: 'var(--border)',
-        boxShadow: '0 0 0 rgba(0, 0, 0, 0)',
-        duration: 0.3,
-        ease: 'power2.out',
+    cardEls.forEach((card) => {
+      const onEnter = () => {
+        gsap.to(card, {
+          y: -8,
+          borderColor: 'var(--accent)',
+          boxShadow: '0 20px 40px rgba(0, 0, 0, 0.4)',
+          duration: 0.3,
+          ease: 'power2.out',
+        });
+      };
+      const onLeave = () => {
+        gsap.to(card, {
+          y: 0,
+          borderColor: 'var(--border)',
+          boxShadow: '0 0 0 rgba(0, 0, 0, 0)',
+          duration: 0.3,
+          ease: 'power2.out',
+        });
+      };
+
+      card.addEventListener('mouseenter', onEnter);
+      card.addEventListener('mouseleave', onLeave);
+
+      ctx.add(() => {
+        card.removeEventListener('mouseenter', onEnter);
+        card.removeEventListener('mouseleave', onLeave);
       });
     });
   });
