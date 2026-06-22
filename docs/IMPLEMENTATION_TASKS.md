@@ -91,7 +91,7 @@ public/fonts/.gitkeep
 
 ### T02 — Design System & Global CSS
 **Branch:** `feat/T02-design-system`  
-**Status:** ⬜ Pending  
+**Status:** ✅ Done  
 **Depends on:** T01
 
 **Scope:**
@@ -409,7 +409,7 @@ For a single developer/agent, this order minimizes rework:
 | Task | Branch | PR | Status |
 |------|--------|-----|--------|
 | T01 | `feat/T01-scaffold` | merged | ✅ Done |
-| T02 | — | — | ⬜ Pending |
+| T02 | `feat/T02-design-system` | merged | ✅ Done |
 | T03 | — | — | ⬜ Pending |
 | T04 | — | — | ⬜ Pending |
 | T05 | — | — | ⬜ Pending |
