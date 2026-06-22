@@ -10,6 +10,7 @@ import { initPreloader } from './utils/preloader.js';
 import { initLenis, getLenis } from './utils/lenis.js';
 import { initCursor } from './utils/cursor.js';
 import { initScrollNav } from './utils/scroll-nav.js';
+import { initSectionVeil } from './utils/section-veil.js';
 import { initHero } from './sections/hero.js';
 import { initMarquee } from './sections/marquee.js';
 import { initPinnedReveal } from './sections/pinned-reveal.js';
@@ -25,6 +26,9 @@ const orchestrator = new ScrollOrchestrator();
 
 /** @type {(() => void) | null} */
 let destroyScrollNav = null;
+
+/** @type {(() => void) | null} */
+let destroySectionVeil = null;
 
 orchestrator
   .register('hero', initHero)
@@ -50,6 +54,7 @@ async function boot() {
   initCursor();
 
   destroyScrollNav = initScrollNav(getLenis());
+  destroySectionVeil = initSectionVeil();
 
   requestAnimationFrame(() => orchestrator.refresh());
 
@@ -64,6 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 if (import.meta.hot) {
   import.meta.hot.dispose(() => {
+    destroySectionVeil?.();
     destroyScrollNav?.();
     orchestrator.destroyAll();
   });

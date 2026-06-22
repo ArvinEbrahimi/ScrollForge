@@ -201,7 +201,7 @@ Phase 6 — Ship
 
 ### V2-A05 — Section Transition Veil
 **Branch:** `feat/V2-A05-section-veil`  
-**Priority:** P1 · **Status:** ⬜  
+**Priority:** P1 · **Status:** ✅ Done  
 **Depends on:** A01
 
 **ایده:** بین sectionها یک veil نازک (clip-path wipe یا gradient sweep) برای حس continuity سینماتیک.
@@ -760,7 +760,7 @@ Phase 0 — Foundation
 [✓] A02  ScrollTrigger.matchMedia system
 [✓] A03  Real asset preloader
 [✓] A04  Global scroll progress nav
-[ ] A05  Section transition veil
+[✓] A05  Section transition veil
 
 Phase 1 — Global UX
 [ ] A06  Sound design (opt-in)
@@ -820,7 +820,7 @@ Phase 6 — Ship
 | A02 | `feat/V2-A02-match-media` | merged | ✅ Done |
 | A03 | `feat/V2-A03-asset-preloader` | merged | ✅ Done |
 | A04 | `feat/V2-A04-scroll-nav` | merged | ✅ Done |
-| A05 | — | — | ⬜ Pending |
+| A05 | `feat/V2-A05-section-veil` | merged | ✅ Done |
 | A06 | — | — | ⬜ Pending |
 | A07 | — | — | ⬜ Pending |
 | A08 | — | — | ⬜ Pending |
