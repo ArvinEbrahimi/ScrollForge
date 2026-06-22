@@ -11,7 +11,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="loader" aria-hidden="true"></div>
+  <div class="loader" aria-hidden="true">
+    <div class="loader__inner">
+      <div class="loader__mark" aria-hidden="true">SF</div>
+      <div class="loader__progress-track" aria-hidden="true">
+        <div class="loader__progress-fill"></div>
+      </div>
+      <p class="loader__percent" aria-live="polite">0</p>
+    </div>
+  </div>
 
   <div class="cursor-dot" aria-hidden="true"></div>
   <div class="cursor-ring" aria-hidden="true">

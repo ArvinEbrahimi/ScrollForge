@@ -24,31 +24,20 @@ export function initHero() {
     </div>
   `;
 
-  const loader = document.querySelector('.loader');
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   return withSectionContext(section, () => {
     const tl = gsap.timeline({
       defaults: { ease: 'power4.out' },
-      delay: prefersReduced ? 0 : 0.3,
+      delay: prefersReduced ? 0 : 0.15,
     });
-
-    if (loader && !prefersReduced) {
-      tl.to(loader, {
-        y: '-100%',
-        duration: 1,
-        ease: 'power4.inOut',
-      });
-    } else if (loader) {
-      loader.style.display = 'none';
-    }
 
     tl.from('.hero__char', {
       y: 120,
       opacity: 0,
       duration: 1,
       stagger: 0.04,
-    }, prefersReduced ? 0 : '-=0.3')
+    })
       .from('.hero__sub', { opacity: 0, y: 20, duration: 0.8 }, '-=0.4')
       .from('.hero__scroll-indicator', { opacity: 0, duration: 0.6 }, '-=0.2')
       .to('.hero__grid', { opacity: 0.15, duration: 2 }, 0);
