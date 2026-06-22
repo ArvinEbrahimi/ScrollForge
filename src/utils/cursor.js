@@ -19,6 +19,7 @@ export function initCursor() {
 
   const pos = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
   const ringPos = { x: pos.x, y: pos.y };
+  let activeEl = null;
 
   gsap.set(dot, { x: pos.x, y: pos.y });
   gsap.set(ring, { x: ringPos.x, y: ringPos.y });
@@ -40,35 +41,36 @@ export function initCursor() {
     dot.classList.remove('is-hidden');
   };
 
-  const setExpand = () => {
+  const applyState = (el) => {
     resetRing();
-    ring.classList.add('is-expand');
+    if (!el) return;
+
+    if (el.matches('[data-cursor="text"]')) {
+      ring.classList.add('is-text');
+      dot.classList.add('is-hidden');
+    } else if (el.matches('[data-cursor="expand"]')) {
+      ring.classList.add('is-expand');
+    } else if (el.matches('a')) {
+      ring.classList.add('is-link');
+      dot.classList.add('is-hidden');
+    }
   };
 
-  const setText = () => {
-    resetRing();
-    ring.classList.add('is-text');
-    dot.classList.add('is-hidden');
-  };
-
-  const setLink = () => {
-    resetRing();
-    ring.classList.add('is-link');
-    dot.classList.add('is-hidden');
-  };
-
-  document.querySelectorAll('[data-cursor="expand"]').forEach((el) => {
-    el.addEventListener('mouseenter', setExpand);
-    el.addEventListener('mouseleave', resetRing);
+  document.addEventListener('mouseover', (e) => {
+    const el = e.target.closest('[data-cursor], a');
+    if (el && el !== activeEl) {
+      activeEl = el;
+      applyState(el);
+    }
   });
 
-  document.querySelectorAll('[data-cursor="text"]').forEach((el) => {
-    el.addEventListener('mouseenter', setText);
-    el.addEventListener('mouseleave', resetRing);
-  });
-
-  document.querySelectorAll('a').forEach((el) => {
-    el.addEventListener('mouseenter', setLink);
-    el.addEventListener('mouseleave', resetRing);
+  document.addEventListener('mouseout', (e) => {
+    if (!activeEl) return;
+    const related = e.relatedTarget;
+    if (related && activeEl.contains(related)) return;
+    if (e.target.closest('[data-cursor], a') === activeEl) {
+      activeEl = null;
+      resetRing();
+    }
   });
 }
