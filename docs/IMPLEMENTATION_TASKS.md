@@ -1,7 +1,8 @@
 # ScrollForge — Implementation Tasks
 
 > **Workflow rule:** هر تسک = یک branch جدا → commit → push → PR → merge به `main`.  
-> **Agent rule:** همیشه مثل senior fullstack developer عمل کن — کد تمیز، scope محدود، PRهای کوچک و قابل review.
+> **Agent rule:** همیشه مثل senior fullstack developer عمل کن — کد تمیز، scope محدود، PRهای کوچک و قابل review.  
+> **V1 تکمیل شده ✅** — ارتقاهای V2: [`V2_ADVANCED_TASKS.md`](./V2_ADVANCED_TASKS.md)
 
 ---
 

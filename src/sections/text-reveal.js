@@ -1,8 +1,9 @@
 import { gsap } from 'gsap';
+import { withSectionContext } from '../core/section-base.js';
 
 export function initTextReveal() {
   const section = document.querySelector('#text-reveal');
-  if (!section) return;
+  if (!section) return null;
 
   const text =
     'The web is a canvas. Every scroll is a frame. Every interaction is a conversation between code and the human who reads it.';
@@ -20,20 +21,22 @@ export function initTextReveal() {
 
   const wordEls = section.querySelectorAll('.reveal-word');
 
-  gsap.fromTo(
-    wordEls,
-    { opacity: 0.15, color: 'var(--text-muted)' },
-    {
-      opacity: 1,
-      color: 'var(--text-primary)',
-      stagger: 0.05,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: section,
-        start: 'top 80%',
-        end: 'bottom 20%',
-        scrub: 1,
-      },
-    }
-  );
+  return withSectionContext(section, () => {
+    gsap.fromTo(
+      wordEls,
+      { opacity: 0.15, color: 'var(--text-muted)' },
+      {
+        opacity: 1,
+        color: 'var(--text-primary)',
+        stagger: 0.05,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: section,
+          start: 'top 80%',
+          end: 'bottom 20%',
+          scrub: 1,
+        },
+      }
+    );
+  });
 }

@@ -1,9 +1,10 @@
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { withSectionContext } from '../core/section-base.js';
 
 export function initPinnedReveal() {
   const section = document.querySelector('#pinned');
-  if (!section) return;
+  if (!section) return null;
 
   const panels = [
     {
@@ -45,39 +46,41 @@ export function initPinnedReveal() {
     </div>
   `;
 
-  const panelEls = section.querySelectorAll('.pinned__panel');
+  return withSectionContext(section, () => {
+    const panelEls = section.querySelectorAll('.pinned__panel');
 
-  ScrollTrigger.create({
-    trigger: section,
-    start: 'top top',
-    end: 'bottom bottom',
-    pin: '.pinned__container',
-  });
-
-  gsap.to('.pinned__progress-fill', {
-    width: '100%',
-    ease: 'none',
-    scrollTrigger: {
+    ScrollTrigger.create({
       trigger: section,
       start: 'top top',
       end: 'bottom bottom',
-      scrub: true,
-    },
+      pin: '.pinned__container',
+    });
+
+    gsap.to('.pinned__progress-fill', {
+      width: '100%',
+      ease: 'none',
+      scrollTrigger: {
+        trigger: section,
+        start: 'top top',
+        end: 'bottom bottom',
+        scrub: true,
+      },
+    });
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: section,
+        start: 'top top',
+        end: 'bottom bottom',
+        scrub: true,
+      },
+    });
+
+    gsap.set(panelEls[0], { opacity: 1, y: 0 });
+
+    tl.to(panelEls[0], { opacity: 0, y: -60, duration: 1 }, 0.55)
+      .fromTo(panelEls[1], { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 1 }, 0.25)
+      .to(panelEls[1], { opacity: 0, y: -60, duration: 1 }, 1.55)
+      .fromTo(panelEls[2], { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 1 }, 1.25);
   });
-
-  const tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: section,
-      start: 'top top',
-      end: 'bottom bottom',
-      scrub: true,
-    },
-  });
-
-  gsap.set(panelEls[0], { opacity: 1, y: 0 });
-
-  tl.to(panelEls[0], { opacity: 0, y: -60, duration: 1 }, 0.55)
-    .fromTo(panelEls[1], { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 1 }, 0.25)
-    .to(panelEls[1], { opacity: 0, y: -60, duration: 1 }, 1.55)
-    .fromTo(panelEls[2], { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 1 }, 1.25);
 }
