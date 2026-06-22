@@ -261,7 +261,7 @@ public/fonts/.gitkeep
 
 ### T10 — SVG Path Section
 **Branch:** `feat/T10-svg-path`  
-**Status:** ⬜ Pending  
+**Status:** ✅ Done  
 **Depends on:** T03
 
 **Scope:**
@@ -417,7 +417,7 @@ For a single developer/agent, this order minimizes rework:
 | T07 | `feat/T07-pinned-reveal` | merged | ✅ Done |
 | T08 | `feat/T08-horizontal-scroll` | merged | ✅ Done |
 | T09 | `feat/T09-text-reveal` | merged | ✅ Done |
-| T10 | — | — | ⬜ Pending |
+| T10 | `feat/T10-svg-path` | merged | ✅ Done |
 | T11 | — | — | ⬜ Pending |
 | T12 | — | — | ⬜ Pending |
 | T13 | — | — | ⬜ Pending |
