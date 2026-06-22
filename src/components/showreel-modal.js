@@ -1,4 +1,5 @@
 import { gsap } from 'gsap';
+import { runViewTransition, supportsViewTransitions } from '../utils/view-transitions.js';
 
 /**
  * @returns {{ open: (triggerEl: HTMLElement) => void, destroy: () => void }}
@@ -10,6 +11,7 @@ export function createShowreelModal() {
   modal.setAttribute('aria-modal', 'true');
   modal.setAttribute('aria-label', 'Showreel video');
   modal.hidden = true;
+  if (supportsViewTransitions) modal.style.viewTransitionName = 'showreel-modal';
 
   modal.innerHTML = `
     <div class="showreel-modal__backdrop" data-close="true"></div>
@@ -40,16 +42,20 @@ export function createShowreelModal() {
   });
 
   const close = () => {
-    gsap.to(panel, {
-      scale: 0,
-      opacity: 0,
-      duration: 0.35,
-      ease: 'power3.in',
-      onComplete: () => {
+    const finish = () => {
+      runViewTransition(() => {
         modal.hidden = true;
         video.pause();
         document.body.style.overflow = '';
-      },
+      });
+    };
+
+    gsap.to(panel, {
+      scale: supportsViewTransitions ? 0.95 : 0,
+      opacity: 0,
+      duration: 0.35,
+      ease: 'power3.in',
+      onComplete: finish,
     });
     gsap.to(backdrop, { opacity: 0, duration: 0.3 });
   };
@@ -59,8 +65,10 @@ export function createShowreelModal() {
     const cx = rect.left + rect.width / 2;
     const cy = rect.top + rect.height / 2;
 
-    modal.hidden = false;
-    document.body.style.overflow = 'hidden';
+    runViewTransition(() => {
+      modal.hidden = false;
+      document.body.style.overflow = 'hidden';
+    });
 
     gsap.set(panel, {
       scale: 0,
