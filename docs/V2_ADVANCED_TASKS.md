@@ -480,7 +480,7 @@ Phase 6 — Ship
 
 ### V2-A22 — Stats Counter Section (NEW)
 **Branch:** `feat/V2-A22-stats-section`  
-**Priority:** P1 · **Status:** ⬜  
+**Priority:** P1 · **Status:** ✅ Done  
 **Depends on:** A01, A04
 
 **ایده:** section جدید بین cards و outro — اعداد بزرگ scrub-driven: `50+ Projects`, `3M+ Lines`, `99 Lighthouse`.
@@ -496,7 +496,7 @@ Phase 6 — Ship
 
 ### V2-A23 — Process Timeline Section (NEW)
 **Branch:** `feat/V2-A23-process-timeline`  
-**Priority:** P1 · **Status:** ⬜  
+**Priority:** P1 · **Status:** ✅ Done  
 **Depends on:** A02
 
 **ایده:** timeline عمودی: Discover → Design → Develop → Deploy — خط accent draw روی scroll.
@@ -511,7 +511,7 @@ Phase 6 — Ship
 
 ### V2-A24 — Tech Stack Orbit (NEW)
 **Branch:** `feat/V2-A24-stack-orbit`  
-**Priority:** P2 · **Status:** ⬜  
+**Priority:** P2 · **Status:** ✅ Done  
 **Depends on:** A11
 
 **ایده:** لوگوهای tech در مدار چرخان (CSS 3D یا Three.js) — hover روی هر لوگو pause + tooltip.
@@ -526,7 +526,7 @@ Phase 6 — Ship
 
 ### V2-A25 — Testimonials Pinned Carousel (NEW)
 **Branch:** `feat/V2-A25-testimonials`  
-**Priority:** P2 · **Status:** ⬜  
+**Priority:** P2 · **Status:** ✅ Done  
 **Depends on:** A02
 
 **ایده:** section pin شده با ۴ quote — scroll عمودی → quote بعدی fade + slide.
@@ -541,7 +541,7 @@ Phase 6 — Ship
 
 ### V2-A26 — Contact Form Section (NEW)
 **Branch:** `feat/V2-A26-contact-form`  
-**Priority:** P1 · **Status:** ⬜  
+**Priority:** P1 · **Status:** ✅ Done  
 **Depends on:** A07
 
 **ایده:** فرم minimal — name, email, message — micro-interactions روی focus (label float, border glow).
@@ -557,7 +557,7 @@ Phase 6 — Ship
 
 ### V2-A27 — Footer + Social Bar (NEW)
 **Branch:** `feat/V2-A27-footer`  
-**Priority:** P1 · **Status:** ⬜  
+**Priority:** P1 · **Status:** ✅ Done  
 **Depends on:** A09
 
 **Scope:**
@@ -785,12 +785,12 @@ Phase 3 — Section Upgrades
 [✓] A21  Outro particle burst
 
 Phase 4 — New Sections
-[ ] A22  Stats counter
-[ ] A23  Process timeline
-[ ] A24  Tech stack orbit
-[ ] A25  Testimonials carousel
-[ ] A26  Contact form
-[ ] A27  Footer + social
+[✓] A22  Stats counter
+[✓] A23  Process timeline
+[✓] A24  Tech stack orbit
+[✓] A25  Testimonials carousel
+[✓] A26  Contact form
+[✓] A27  Footer + social
 
 Phase 5 — Interaction
 [ ] A28  Cursor v2 trail
@@ -837,12 +837,12 @@ Phase 6 — Ship
 | A19 | `feat/V2-A15-phase3-sections` | merged | ✅ Done |
 | A20 | `feat/V2-A15-phase3-sections` | merged | ✅ Done |
 | A21 | `feat/V2-A15-phase3-sections` | merged | ✅ Done |
-| A22 | — | — | ⬜ Pending |
-| A23 | — | — | ⬜ Pending |
-| A24 | — | — | ⬜ Pending |
-| A25 | — | — | ⬜ Pending |
-| A26 | — | — | ⬜ Pending |
-| A27 | — | — | ⬜ Pending |
+| A22 | `feat/V2-A22-phase4-sections` | merged | ✅ Done |
+| A23 | `feat/V2-A22-phase4-sections` | merged | ✅ Done |
+| A24 | `feat/V2-A22-phase4-sections` | merged | ✅ Done |
+| A25 | `feat/V2-A22-phase4-sections` | merged | ✅ Done |
+| A26 | `feat/V2-A22-phase4-sections` | merged | ✅ Done |
+| A27 | `feat/V2-A22-phase4-sections` | merged | ✅ Done |
 | A28 | — | — | ⬜ Pending |
 | A29 | — | — | ⬜ Pending |
 | A30 | — | — | ⬜ Pending |
