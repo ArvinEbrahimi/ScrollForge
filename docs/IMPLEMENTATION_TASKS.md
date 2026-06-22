@@ -299,7 +299,7 @@ public/fonts/.gitkeep
 
 ### T12 — Outro Section
 **Branch:** `feat/T12-outro`  
-**Status:** ⬜ Pending  
+**Status:** ✅ Done  
 **Depends on:** T03
 
 **Scope:**
@@ -419,7 +419,7 @@ For a single developer/agent, this order minimizes rework:
 | T09 | `feat/T09-text-reveal` | merged | ✅ Done |
 | T10 | `feat/T10-svg-path` | merged | ✅ Done |
 | T11 | `feat/T11-stagger-cards` | merged | ✅ Done |
-| T12 | — | — | ⬜ Pending |
+| T12 | `feat/T12-outro` | merged | ✅ Done |
 | T13 | — | — | ⬜ Pending |
 | T14 | — | — | ⬜ Pending |
 
