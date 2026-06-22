@@ -572,7 +572,7 @@ Phase 6 — Ship
 
 ### V2-A28 — Cursor v2 (Blend Modes + Trail)
 **Branch:** `feat/V2-A28-cursor-v2`  
-**Priority:** P1 · **Status:** ⬜  
+**Priority:** P1 · **Status:** ✅ Done  
 **Depends on:** A01
 
 **ایده:** cursor با `mix-blend-mode: difference`، trail dots، state `drag` برای horizontal section.
@@ -587,7 +587,7 @@ Phase 6 — Ship
 
 ### V2-A29 — Keyboard Section Navigation
 **Branch:** `feat/V2-A29-keyboard-nav`  
-**Priority:** P1 · **Status:** ⬜  
+**Priority:** P1 · **Status:** ✅ Done  
 **Depends on:** A04
 
 **Scope:**
@@ -600,7 +600,7 @@ Phase 6 — Ship
 
 ### V2-A30 — Scroll Velocity Skew
 **Branch:** `feat/V2-A30-velocity-skew`  
-**Priority:** P2 · **Status:** ⬜  
+**Priority:** P2 · **Status:** ✅ Done  
 **Depends on:** A10, A03 (Lenis velocity)
 
 **ایده:** وقتی scroll سریع است، sectionها `skewY(±2deg)` subtle — حس speed.
@@ -614,7 +614,7 @@ Phase 6 — Ship
 
 ### V2-A31 — View Transitions API
 **Branch:** `feat/V2-A31-view-transitions`  
-**Priority:** P2 · **Status:** ⬜  
+**Priority:** P2 · **Status:** ✅ Done  
 **Depends on:** A17
 
 **Scope:**
@@ -626,7 +626,7 @@ Phase 6 — Ship
 
 ### V2-A32 — Easter Egg (Konami / Secret Section)
 **Branch:** `feat/V2-A32-easter-egg`  
-**Priority:** P3 · **Status:** ⬜  
+**Priority:** P3 · **Status:** ✅ Done  
 **Depends on:** A29
 
 **ایده:** Konami code → secret section "Behind the Scenes" با GSAP timeline debug viz.
@@ -793,11 +793,11 @@ Phase 4 — New Sections
 [✓] A27  Footer + social
 
 Phase 5 — Interaction
-[ ] A28  Cursor v2 trail
-[ ] A29  Keyboard nav
-[ ] A30  Velocity skew
-[ ] A31  View Transitions API
-[ ] A32  Easter egg
+[✓] A28  Cursor v2 trail
+[✓] A29  Keyboard nav
+[✓] A30  Velocity skew
+[✓] A31  View Transitions API
+[✓] A32  Easter egg
 
 Phase 6 — Ship
 [ ] A33  Performance audit
@@ -843,11 +843,11 @@ Phase 6 — Ship
 | A25 | `feat/V2-A22-phase4-sections` | merged | ✅ Done |
 | A26 | `feat/V2-A22-phase4-sections` | merged | ✅ Done |
 | A27 | `feat/V2-A22-phase4-sections` | merged | ✅ Done |
-| A28 | — | — | ⬜ Pending |
-| A29 | — | — | ⬜ Pending |
-| A30 | — | — | ⬜ Pending |
-| A31 | — | — | ⬜ Pending |
-| A32 | — | — | ⬜ Pending |
+| A28 | `feat/V2-A28-phase5-interactions` | merged | ✅ Done |
+| A29 | `feat/V2-A28-phase5-interactions` | merged | ✅ Done |
+| A30 | `feat/V2-A28-phase5-interactions` | merged | ✅ Done |
+| A31 | `feat/V2-A28-phase5-interactions` | merged | ✅ Done |
+| A32 | `feat/V2-A28-phase5-interactions` | merged | ✅ Done |
 | A33 | — | — | ⬜ Pending |
 | A34 | — | — | ⬜ Pending |
 | A35 | — | — | ⬜ Pending |
