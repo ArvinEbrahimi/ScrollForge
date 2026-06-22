@@ -9,7 +9,13 @@ export const SECTION_NAV = [
   { id: 'text-reveal', label: 'Philosophy', abbr: 'PH' },
   { id: 'svg-path', label: 'Workflow', abbr: 'WF' },
   { id: 'cards', label: 'Capabilities', abbr: 'CP' },
-  { id: 'outro', label: 'Contact', abbr: 'CT' },
+  { id: 'stats', label: 'Statistics', abbr: 'ST' },
+  { id: 'process', label: 'Process', abbr: 'PR' },
+  { id: 'stack', label: 'Stack', abbr: 'SK' },
+  { id: 'testimonials', label: 'Testimonials', abbr: 'TM' },
+  { id: 'contact', label: 'Contact', abbr: 'CN' },
+  { id: 'outro', label: 'Closing', abbr: 'OT' },
+  { id: 'footer', label: 'Footer', abbr: 'FO' },
 ];
 
 /**
@@ -106,7 +112,7 @@ export function initScrollNav(lenis) {
       }
     });
 
-    nav.classList.toggle('is-hidden', current?.id === 'outro');
+    nav.classList.toggle('is-hidden', current?.id === 'outro' || current?.id === 'footer');
   };
 
   const scrollToSection = (id) => {
