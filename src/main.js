@@ -7,8 +7,9 @@ import './style.css';
 
 import { ScrollOrchestrator } from './core/orchestrator.js';
 import { initPreloader } from './utils/preloader.js';
-import { initLenis } from './utils/lenis.js';
+import { initLenis, getLenis } from './utils/lenis.js';
 import { initCursor } from './utils/cursor.js';
+import { initScrollNav } from './utils/scroll-nav.js';
 import { initHero } from './sections/hero.js';
 import { initMarquee } from './sections/marquee.js';
 import { initPinnedReveal } from './sections/pinned-reveal.js';
@@ -21,6 +22,9 @@ import { initOutro } from './sections/outro.js';
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 const orchestrator = new ScrollOrchestrator();
+
+/** @type {(() => void) | null} */
+let destroyScrollNav = null;
 
 orchestrator
   .register('hero', initHero)
@@ -45,6 +49,8 @@ async function boot() {
   orchestrator.initAll();
   initCursor();
 
+  destroyScrollNav = initScrollNav(getLenis());
+
   requestAnimationFrame(() => orchestrator.refresh());
 
   if (import.meta.env.DEV) {
@@ -58,6 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 if (import.meta.hot) {
   import.meta.hot.dispose(() => {
+    destroyScrollNav?.();
     orchestrator.destroyAll();
   });
 }
