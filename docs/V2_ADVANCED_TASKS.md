@@ -368,7 +368,7 @@ Phase 6 — Ship
 
 ### V2-A15 — Marquee: Velocity-Reactive
 **Branch:** `feat/V2-A15-marquee-velocity`  
-**Priority:** P1 · **Status:** ⬜  
+**Priority:** P1 · **Status:** ✅ Done  
 **Depends on:** A01
 
 **ایده:** سرعت marquee به scroll velocity وابسته — scroll سریع = marquee تندتر.
@@ -383,7 +383,7 @@ Phase 6 — Ship
 
 ### V2-A16 — Pinned Reveal: 3D Tilt + Video Mockups
 **Branch:** `feat/V2-A16-pinned-3d`  
-**Priority:** P0 · **Status:** ⬜  
+**Priority:** P0 · **Status:** ✅ Done  
 **Depends on:** A02
 
 **ایده:** panelها با `rotateX/rotateY` subtle tilt به mouse؛ visualها video loop کوتاه.
@@ -399,7 +399,7 @@ Phase 6 — Ship
 
 ### V2-A17 — Horizontal: Real Media + Case Study Modal
 **Branch:** `feat/V2-A17-horizontal-modal`  
-**Priority:** P0 · **Status:** ⬜  
+**Priority:** P0 · **Status:** ✅ Done  
 **Depends on:** A02, A01
 
 **ایده:** تصاویر واقعی پروژه + کلیک کارت → fullscreen case study با FLIP animation.
@@ -416,7 +416,7 @@ Phase 6 — Ship
 
 ### V2-A18 — Text Reveal: Per-Word Scroll Zones
 **Branch:** `feat/V2-A18-text-zones`  
-**Priority:** P1 · **Status:** ⬜  
+**Priority:** P1 · **Status:** ✅ Done  
 **Depends on:** A01
 
 **ایده:** upgrade از stagger ساده به Linear-style — هر کلمه trigger مستقل با `start` محاسبه‌شده.
@@ -431,7 +431,7 @@ Phase 6 — Ship
 
 ### V2-A19 — SVG Path: Morphing Milestones
 **Branch:** `feat/V2-A19-svg-morph`  
-**Priority:** P1 · **Status:** ⬜  
+**Priority:** P1 · **Status:** ✅ Done  
 **Depends on:** A01
 
 **ایده:** path بین milestoneها morph کند (GSAP MorphSVG نیست — استفاده از `d` attribute lerp یا چند path crossfade).
@@ -447,7 +447,7 @@ Phase 6 — Ship
 
 ### V2-A20 — Cards: 3D Tilt + Glassmorphism
 **Branch:** `feat/V2-A20-cards-3d`  
-**Priority:** P1 · **Status:** ⬜  
+**Priority:** P1 · **Status:** ✅ Done  
 **Depends on:** A01
 
 **ایده:** کارت‌ها glass effect + tilt 3D به mouse + gradient border animated.
@@ -463,7 +463,7 @@ Phase 6 — Ship
 
 ### V2-A21 — Outro: Particle Burst + Email CTA
 **Branch:** `feat/V2-A21-outro-burst`  
-**Priority:** P1 · **Status:** ⬜  
+**Priority:** P1 · **Status:** ✅ Done  
 **Depends on:** A11
 
 **ایده:** ورود به outro = burst of lime particles؛ CTA اصلی `GET IN TOUCH` با mailto یا form link.
@@ -776,13 +776,13 @@ Phase 2 — Hero 2.0
 [✓] A14  Showreel video modal
 
 Phase 3 — Section Upgrades
-[ ] A15  Velocity-reactive marquee
-[ ] A16  Pinned 3D tilt + video
-[ ] A17  Horizontal FLIP case modal
-[ ] A18  Per-word text zones
-[ ] A19  SVG morph milestones
-[ ] A20  Cards 3D glass
-[ ] A21  Outro particle burst
+[✓] A15  Velocity-reactive marquee
+[✓] A16  Pinned 3D tilt + video
+[✓] A17  Horizontal FLIP case modal
+[✓] A18  Per-word text zones
+[✓] A19  SVG morph milestones
+[✓] A20  Cards 3D glass
+[✓] A21  Outro particle burst
 
 Phase 4 — New Sections
 [ ] A22  Stats counter
@@ -830,13 +830,13 @@ Phase 6 — Ship
 | A12 | `feat/V2-A12-hero-scramble` | merged | ✅ Done |
 | A13 | `feat/V2-A13-hero-depth` | merged | ✅ Done |
 | A14 | `feat/V2-A14-hero-reel` | merged | ✅ Done |
-| A15 | — | — | ⬜ Pending |
-| A16 | — | — | ⬜ Pending |
-| A17 | — | — | ⬜ Pending |
-| A18 | — | — | ⬜ Pending |
-| A19 | — | — | ⬜ Pending |
-| A20 | — | — | ⬜ Pending |
-| A21 | — | — | ⬜ Pending |
+| A15 | `feat/V2-A15-phase3-sections` | merged | ✅ Done |
+| A16 | `feat/V2-A15-phase3-sections` | merged | ✅ Done |
+| A17 | `feat/V2-A15-phase3-sections` | merged | ✅ Done |
+| A18 | `feat/V2-A15-phase3-sections` | merged | ✅ Done |
+| A19 | `feat/V2-A15-phase3-sections` | merged | ✅ Done |
+| A20 | `feat/V2-A15-phase3-sections` | merged | ✅ Done |
+| A21 | `feat/V2-A15-phase3-sections` | merged | ✅ Done |
 | A22 | — | — | ⬜ Pending |
 | A23 | — | — | ⬜ Pending |
 | A24 | — | — | ⬜ Pending |

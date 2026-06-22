@@ -1,44 +1,57 @@
 import { gsap } from 'gsap';
 import { withSectionContext } from '../core/section-base.js';
+import { BREAKPOINTS, createMatchMedia } from '../utils/match-media.js';
+
+const SEGMENTS = [
+  'M 50,150 C 150,50 250,250 350,150',
+  'S 550,50 650,150',
+  'S 850,250 950,150',
+  'S 1100,50 1150,150',
+];
+
+const MILESTONES = [
+  { cx: 50, label: 'INIT', x: 30 },
+  { cx: 350, label: 'BUILD', x: 330 },
+  { cx: 650, label: 'TEST', x: 630 },
+  { cx: 950, label: 'DEPLOY', x: 930 },
+];
 
 export function initSvgPath() {
   const section = document.querySelector('#svg-path');
   if (!section) return null;
 
+  const isMobile = window.matchMedia(BREAKPOINTS.mobile).matches;
+  const milestones = isMobile ? MILESTONES.filter((_, i) => i === 0 || i === 3) : MILESTONES;
+
   section.innerHTML = `
     <div class="svg-path__container" role="img" aria-label="Development workflow: Init, Build, Test, Deploy">
       <h3 class="svg-path__eyebrow">THE WORKFLOW</h3>
       <svg class="svg-path__svg" viewBox="0 0 1200 300" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
-        <path
-          class="svg-path__line"
-          d="M 50,150 C 150,50 250,250 350,150 S 550,50 650,150 S 850,250 950,150 S 1100,50 1150,150"
-          fill="none"
-          stroke="var(--accent)"
-          stroke-width="2"
-          stroke-linecap="round"
-        />
-        <circle class="svg-milestone" cx="50"   cy="150" r="6" />
-        <circle class="svg-milestone" cx="350"  cy="150" r="6" opacity="0" />
-        <circle class="svg-milestone" cx="650"  cy="150" r="6" opacity="0" />
-        <circle class="svg-milestone" cx="950"  cy="150" r="6" opacity="0" />
-        <circle class="svg-milestone" cx="1150" cy="150" r="6" opacity="0" />
-        <text class="svg-label" x="30"   y="130" font-size="12">INIT</text>
-        <text class="svg-label" x="330"  y="130" font-size="12" opacity="0">BUILD</text>
-        <text class="svg-label" x="630"  y="130" font-size="12" opacity="0">TEST</text>
-        <text class="svg-label" x="930"  y="130" font-size="12" opacity="0">DEPLOY</text>
+        ${SEGMENTS.map((d, i) => `<path class="svg-path__segment" data-segment="${i}" d="${d}" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" />`).join('')}
+        ${milestones
+          .map(
+            (m, i) => `
+          <circle class="svg-milestone" cx="${m.cx}" cy="150" r="6" opacity="${i === 0 ? 1 : 0}" />
+          <text class="svg-label" x="${m.x}" y="130" font-size="12" opacity="${i === 0 ? 1 : 0}">${m.label}</text>
+        `
+          )
+          .join('')}
       </svg>
     </div>
   `;
 
-  const path = section.querySelector('.svg-path__line');
-  const length = path.getTotalLength();
+  const segments = section.querySelectorAll('.svg-path__segment');
+  const dots = section.querySelectorAll('.svg-milestone');
+  const labels = section.querySelectorAll('.svg-label');
 
-  return withSectionContext(section, () => {
-    gsap.set(path, { strokeDasharray: length, strokeDashoffset: length });
+  return withSectionContext(section, (ctx) => {
+    const lengths = [...segments].map((seg) => {
+      const len = seg.getTotalLength();
+      gsap.set(seg, { strokeDasharray: len, strokeDashoffset: len });
+      return len;
+    });
 
-    gsap.to(path, {
-      strokeDashoffset: 0,
-      ease: 'none',
+    const tl = gsap.timeline({
       scrollTrigger: {
         trigger: section,
         start: 'top 80%',
@@ -47,19 +60,35 @@ export function initSvgPath() {
       },
     });
 
-    const milestones = section.querySelectorAll('.svg-milestone:not(:first-child)');
-    const labels = section.querySelectorAll('.svg-label:not(:first-child)');
+    segments.forEach((seg, i) => {
+      tl.to(seg, { strokeDashoffset: 0, ease: 'none', duration: 1 }, i * 0.9);
+    });
 
-    milestones.forEach((dot, i) => {
-      gsap.to([dot, labels[i]], {
-        opacity: 1,
-        duration: 0.3,
+    dots.forEach((dot, i) => {
+      if (i === 0) return;
+
+      tl.to(
+        [dot, labels[i]],
+        { opacity: 1, y: 0, duration: 0.3, ease: 'power2.out' },
+        i * 0.9 + 0.2
+      );
+
+      gsap.to(dot, {
+        scale: 1.4,
+        transformOrigin: 'center',
+        repeat: -1,
+        yoyo: true,
+        duration: 0.8,
+        ease: 'power1.inOut',
         scrollTrigger: {
           trigger: section,
-          start: `${20 + i * 22}% 80%`,
-          toggleActions: 'play none none reverse',
+          start: `${15 + i * 20}% 80%`,
+          toggleActions: 'play pause resume pause',
         },
       });
     });
+
+    gsap.set(labels, { y: 8 });
+    ctx.add(() => {});
   });
 }
