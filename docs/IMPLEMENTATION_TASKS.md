@@ -320,7 +320,7 @@ public/fonts/.gitkeep
 
 ### T13 — Responsive, Accessibility & Polish
 **Branch:** `feat/T13-responsive-a11y`  
-**Status:** ⬜ Pending  
+**Status:** ✅ Done  
 **Depends on:** T05–T12
 
 **Scope:**
@@ -420,7 +420,7 @@ For a single developer/agent, this order minimizes rework:
 | T10 | `feat/T10-svg-path` | merged | ✅ Done |
 | T11 | `feat/T11-stagger-cards` | merged | ✅ Done |
 | T12 | `feat/T12-outro` | merged | ✅ Done |
-| T13 | — | — | ⬜ Pending |
+| T13 | `feat/T13-responsive-a11y` | merged | ✅ Done |
 | T14 | — | — | ⬜ Pending |
 
 > این جدول بعد از هر PR merge به‌روز می‌شود.

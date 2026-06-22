@@ -20,7 +20,6 @@ gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 document.addEventListener('DOMContentLoaded', () => {
   initLenis();
-  initCursor();
   initHero();
   initMarquee();
   initPinnedReveal();
@@ -29,6 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initSvgPath();
   initStaggerCards();
   initOutro();
+  initCursor();
 
   requestAnimationFrame(() => ScrollTrigger.refresh());
 });
