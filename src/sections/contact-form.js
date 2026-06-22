@@ -65,13 +65,13 @@ export function initContactForm() {
     return !message;
   };
 
-  return withSectionContext(section, (ctx) => {
+  return withSectionContext(section, (ctx, add) => {
     const inputs = form.querySelectorAll('.contact__input');
 
     inputs.forEach((input) => {
       const onBlur = () => validateField(input);
       input.addEventListener('blur', onBlur);
-      ctx.add(() => input.removeEventListener('blur', onBlur));
+      add(() => input.removeEventListener('blur', onBlur));
     });
 
     const onSubmit = (e) => {
@@ -102,7 +102,7 @@ export function initContactForm() {
     };
 
     form.addEventListener('submit', onSubmit);
-    ctx.add(() => form.removeEventListener('submit', onSubmit));
+    add(() => form.removeEventListener('submit', onSubmit));
 
     gsap.from('.contact__header', {
       y: 40,

@@ -51,7 +51,7 @@ export function initStackOrbit() {
   let spinTween = null;
   let paused = false;
 
-  return withSectionContext(section, (ctx) => {
+  return withSectionContext(section, (ctx, add) => {
     if (!prefersReduced) {
       spinTween = gsap.to(ring, {
         rotateY: 360,
@@ -88,14 +88,14 @@ export function initStackOrbit() {
       node.addEventListener('mouseleave', onLeave);
       node.addEventListener('click', onClick);
 
-      ctx.add(() => {
+      add(() => {
         node.removeEventListener('mouseenter', onEnter);
         node.removeEventListener('mouseleave', onLeave);
         node.removeEventListener('click', onClick);
       });
     });
 
-    ctx.add(() => {
+    add(() => {
       spinTween?.kill();
       if (paused) spinTween = null;
     });

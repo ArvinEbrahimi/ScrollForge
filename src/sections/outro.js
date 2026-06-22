@@ -61,21 +61,25 @@ export function initOutro() {
     }
   });
 
-  return withSectionContext(section, (ctx) => {
-    ctx.add(() => destroyBurst?.());
+  return withSectionContext(section, (ctx, add) => {
+    add(() => {
+      destroyBurst?.();
+      document.body.classList.remove('is-outro-active');
+    });
 
     ScrollTrigger.create({
       trigger: section,
       start: 'top 60%',
       end: 'bottom bottom',
       onEnter: () => {
-        gsap.to('body', { backgroundColor: 'var(--accent)', duration: 0.6 });
+        document.body.classList.add('is-outro-active');
         if (!burstOnce) {
           destroyBurst = initOutroBurst(section);
           burstOnce = true;
         }
       },
-      onLeaveBack: () => gsap.to('body', { backgroundColor: 'var(--bg)', duration: 0.6 }),
+      onLeave: () => document.body.classList.remove('is-outro-active'),
+      onLeaveBack: () => document.body.classList.remove('is-outro-active'),
     });
 
     const chars = section.querySelectorAll('.outro__char');

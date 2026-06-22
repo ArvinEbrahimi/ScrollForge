@@ -77,7 +77,7 @@ export function initMarquee() {
 
   if (prefersReduced) return null;
 
-  return withSectionContext(section, (ctx) => {
+  return withSectionContext(section, (ctx, add) => {
     const [track1, track2] = section.querySelectorAll('.marquee__track');
 
     const anim1 = gsap.to(track1, { x: '-50%', ease: 'none', duration: 20, repeat: -1 });
@@ -115,7 +115,7 @@ export function initMarquee() {
 
     if (lenis) lenis.on('scroll', onScroll);
 
-    ctx.add(() => {
+    add(() => {
       section.removeEventListener('mouseenter', onEnter);
       section.removeEventListener('mouseleave', onLeave);
       if (lenis) lenis.off('scroll', onScroll);

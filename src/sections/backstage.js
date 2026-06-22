@@ -58,8 +58,8 @@ export function initBackstage(orchestrator) {
   };
   raf = requestAnimationFrame(tick);
 
-  return withSectionContext(section, (ctx) => {
-    ctx.add(() => cancelAnimationFrame(raf));
+  return withSectionContext(section, (ctx, add) => {
+    add(() => cancelAnimationFrame(raf));
 
     gsap.from('.backstage__card', {
       y: 40,

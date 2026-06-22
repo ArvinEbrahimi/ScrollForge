@@ -64,7 +64,7 @@ export function initProcess() {
   const lineFill = section.querySelector('.process__line-fill');
   const steps = section.querySelectorAll('.process__step');
 
-  return withSectionContext(section, (ctx) => {
+  return withSectionContext(section, (ctx, add) => {
     const revertMedia = createMatchMedia({
       [`(min-width: 769px) and (prefers-reduced-motion: no-preference)`]: () => {
         gsap.to(lineFill, {
@@ -114,6 +114,6 @@ export function initProcess() {
       },
     });
 
-    ctx.add(revertMedia);
+    add(revertMedia);
   });
 }

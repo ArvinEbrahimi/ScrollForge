@@ -80,8 +80,8 @@ export function initHorizontalScroll() {
     });
   });
 
-  return withSectionContext(section, (ctx) => {
-    ctx.add(() => caseModal.destroy());
+  return withSectionContext(section, (ctx, add) => {
+    add(() => caseModal.destroy());
 
     const revertMedia = createMatchMedia({
       [`${BREAKPOINTS.mobile} and (prefers-reduced-motion: no-preference)`]: () => {
@@ -108,6 +108,7 @@ export function initHorizontalScroll() {
             end: () => `+=${track.scrollWidth}`,
             scrub: 1,
             pin: true,
+            pinReparent: true,
             anticipatePin: 1,
             invalidateOnRefresh: true,
           },
@@ -137,6 +138,6 @@ export function initHorizontalScroll() {
       },
     });
 
-    ctx.add(revertMedia);
+    add(revertMedia);
   });
 }

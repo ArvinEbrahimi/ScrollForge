@@ -10,13 +10,12 @@ import { initPreloader } from './utils/preloader.js';
 import { initLenis, getLenis } from './utils/lenis.js';
 import { initCursor } from './utils/cursor.js';
 import { initScrollNav } from './utils/scroll-nav.js';
-import { initSectionVeil } from './utils/section-veil.js';
 import { initSound } from './utils/sound.js';
 import { initTheme } from './utils/theme.js';
 import { initScrollProgress } from './utils/scroll-progress.js';
 import { initPostLayer } from './utils/post-layer.js';
-import { initKeyboardNav } from './utils/keyboard-nav.js';
 import { initVelocitySkew } from './utils/velocity-skew.js';
+import { initKeyboardNav } from './utils/keyboard-nav.js';
 import { initEasterEgg } from './utils/easter-egg.js';
 import { initMicroInteractions } from './utils/micro-interactions.js';
 import { initHero } from './sections/hero.js';
@@ -42,9 +41,6 @@ const orchestrator = new ScrollOrchestrator();
 let destroyScrollNav = null;
 
 /** @type {(() => void) | null} */
-let destroySectionVeil = null;
-
-/** @type {(() => void) | null} */
 let destroySound = null;
 
 /** @type {(() => void) | null} */
@@ -57,13 +53,13 @@ let destroyScrollProgress = null;
 let destroyPostLayer = null;
 
 /** @type {(() => void) | null} */
+let destroyVelocitySkew = null;
+
+/** @type {(() => void) | null} */
 let destroyCursor = null;
 
 /** @type {(() => void) | null} */
 let destroyKeyboardNav = null;
-
-/** @type {(() => void) | null} */
-let destroyVelocitySkew = null;
 
 /** @type {(() => void) | null} */
 let destroyEasterEgg = null;
@@ -75,17 +71,17 @@ orchestrator
   .register('hero', initHero)
   .register('marquee', initMarquee)
   .register('pinned', initPinnedReveal)
-  .register('horizontal', initHorizontalScroll, { lazy: true })
-  .register('text-reveal', initTextReveal, { lazy: true })
-  .register('svg-path', initSvgPath, { lazy: true })
-  .register('cards', initStaggerCards, { lazy: true })
-  .register('stats', initStats, { lazy: true })
-  .register('process', initProcess, { lazy: true })
-  .register('stack', initStackOrbit, { lazy: true })
-  .register('testimonials', initTestimonials, { lazy: true })
-  .register('contact', initContactForm, { lazy: true })
-  .register('outro', initOutro, { lazy: true })
-  .register('footer', initFooter, { lazy: true });
+  .register('horizontal', initHorizontalScroll)
+  .register('text-reveal', initTextReveal)
+  .register('svg-path', initSvgPath)
+  .register('cards', initStaggerCards)
+  .register('stats', initStats)
+  .register('process', initProcess)
+  .register('stack', initStackOrbit)
+  .register('testimonials', initTestimonials)
+  .register('contact', initContactForm)
+  .register('outro', initOutro)
+  .register('footer', initFooter);
 
 async function boot() {
   document.body.classList.add('is-loading');
@@ -102,13 +98,12 @@ async function boot() {
   destroyCursor = initCursor();
 
   destroyScrollNav = initScrollNav(lenis);
-  destroySectionVeil = initSectionVeil();
   destroySound = initSound(lenis);
   destroyTheme = initTheme();
   destroyScrollProgress = initScrollProgress();
   destroyPostLayer = initPostLayer(lenis);
-  destroyKeyboardNav = initKeyboardNav(lenis);
   destroyVelocitySkew = initVelocitySkew(lenis);
+  destroyKeyboardNav = initKeyboardNav(lenis);
   destroyEasterEgg = initEasterEgg(orchestrator);
   destroyMicroInteractions = initMicroInteractions();
 
@@ -127,14 +122,13 @@ if (import.meta.hot) {
   import.meta.hot.dispose(() => {
     destroyEasterEgg?.();
     destroyMicroInteractions?.();
-    destroyVelocitySkew?.();
     destroyKeyboardNav?.();
     destroyCursor?.();
-    destroySectionVeil?.();
     destroySound?.();
     destroyTheme?.();
     destroyScrollProgress?.();
     destroyPostLayer?.();
+    destroyVelocitySkew?.();
     destroyScrollNav?.();
     orchestrator.destroyAll();
   });
